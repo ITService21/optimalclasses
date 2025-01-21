@@ -1,4 +1,4 @@
-leconst mongoose = require("mongoose")
+const mongoose = require("mongoose")
 
 // Define the Courses schema
 const coursesSchema = new mongoose.Schema({

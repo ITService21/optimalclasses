@@ -1,6 +1,6 @@
 import { useEffect, useRef } from "react";
 
-const useFlipHookAnimation = (animationClass, threshold = 0.5) => {
+const useScrollAnimation = (animationClass, threshold = 0.5) => {
   const elementRef = useRef(null);
 
   useEffect(() => {
@@ -33,4 +33,4 @@ const useFlipHookAnimation = (animationClass, threshold = 0.5) => {
   return elementRef;
 };
 
-export default useFlipHookAnimation;
+export default useScrollAnimation;

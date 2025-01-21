@@ -1,6 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: ["./src/**/*.{js,jsx,ts,tsx}"],
+  content: ["./src/**/*.{js,jsx,ts,tsx}",'./node_modules/tw-elements-react/dist/js/**/*.js'],
   theme: {
     fontFamily: {
       inter: ["Inter", "sans-serif"],
@@ -193,63 +193,38 @@ module.exports = {
     },
     extend: {
       keyframes: {
-        rotateIn: {
-          '0%': { transform: 'rotate(-200deg)', opacity: '0' },
-          '100%': { transform: 'rotate(0deg)', opacity: '1' },
+        flipInX: {
+          '0%': {
+            transform: 'perspective(400px) rotateX(90deg)',
+            opacity: '0',
+          },
+          '40%': {
+            transform: 'perspective(400px) rotateX(-20deg)',
+            opacity: '1',
+          },
+          '60%': {
+            transform: 'perspective(400px) rotateX(10deg)',
+          },
+          '80%': {
+            transform: 'perspective(400px) rotateX(-5deg)',
+          },
+          '100%': {
+            transform: 'perspective(400px) rotateX(0deg)',
+          },
         },
-        zoomInRotate: {
-          '0%': { transform: 'scale(0) rotate(-90deg)', opacity: '0' },
-          '100%': { transform: 'scale(1) rotate(0deg)', opacity: '1' },
+        slideInLeftToRight: {
+          '0%': { transform: 'translateX(-100%)', opacity: '0' },
+          '100%': { transform: 'translateX(0)', opacity: '1' },
         },
-        bounceInDown: {
-          '0%': { transform: 'translateY(-200%)', opacity: '0' },
-          '60%': { transform: 'translateY(10%)', opacity: '1' },
-          '100%': { transform: 'translateY(0)', opacity: '1' },
+        slideInRightToLeft: {
+          '0%': { transform: 'translateX(100%)', opacity: '0' },
+          '100%': { transform: 'translateX(0)', opacity: '1' },
         },
-        slideInDiagonal: {
-          '0%': { transform: 'translate(200%, -200%)', opacity: '0' },
-          '100%': { transform: 'translate(0, 0)', opacity: '1' },
-        },
-        flipInDiagonal: {
-          '0%': { transform: 'rotateX(-90deg) rotateY(-90deg)', opacity: '0' },
-          '100%': { transform: 'rotateX(0deg) rotateY(0deg)', opacity: '1' },
-        },
-        scaleInSkew: {
-          '0%': { transform: 'scale(0) skewX(-30deg)', opacity: '0' },
-          '100%': { transform: 'scale(1) skewX(0deg)', opacity: '1' },
-        },
-        rippleIn: {
-          '0%': { transform: 'scale(0.5)', opacity: '0' },
-          '50%': { transform: 'scale(1.2)', opacity: '0.7' },
-          '100%': { transform: 'scale(1)', opacity: '1' },
-        },
-        dropIn: {
-          '0%': { transform: 'translateY(-100%)', opacity: '0' },
-          '70%': { transform: 'translateY(20%)', opacity: '1' },
-          '100%': { transform: 'translateY(0)', opacity: '1' },
-        },
-        waveIn: {
-          '0%': { transform: 'translateX(-100%) rotate(-15deg)', opacity: '0' },
-          '50%': { transform: 'translateX(-10%) rotate(5deg)', opacity: '0.8' },
-          '100%': { transform: 'translateX(0) rotate(0deg)', opacity: '1' },
-        },
-        expandHorizontal: {
-          '0%': { transform: 'scaleX(0)', opacity: '0' },
-          '100%': { transform: 'scaleX(1)', opacity: '1' },
-        },
-
       },
       animation: {
-        rotateIn: 'rotateIn 0.6s ease-out',
-        zoomInRotate: 'zoomInRotate 0.8s ease-out',
-        bounceInDown: 'bounceInDown 1s ease',
-        slideInDiagonal: 'slideInDiagonal 0.7s ease-in-out',
-        flipInDiagonal: 'flipInDiagonal 0.8s ease-out',
-        scaleInSkew: 'scaleInSkew 0.6s ease-in',
-        rippleIn: 'rippleIn 0.9s ease-out',
-        dropIn: 'dropIn 0.8s ease-in',
-        waveIn: 'waveIn 1s ease-in-out',
-        expandHorizontal: 'expandHorizontal 0.6s ease-out',
+        flipInX: 'flipInX 1s ease-in-out',
+        slideInLeftToRight: 'slideInLeftToRight 1s ease-out forwards',
+        slideInRightToLeft: 'slideInRightToLeft 1s ease-out forwards',
       },
     
   
@@ -257,6 +232,7 @@ module.exports = {
         maxContent: "1260px",
         maxContentTab: "650px"
       },
+ 
     },
   },
   plugins: [],

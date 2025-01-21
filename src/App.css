@@ -2,7 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-
+@import "tw-elements-react/dist/css/tw-elements-react.min.css";
 /* .custom-bg {
   background: #1c1c1c; 
   background-size: cover;

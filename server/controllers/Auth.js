@@ -24,7 +24,7 @@ exports.signup = async (req, res) => {
       contactNumber,
       otp,
     } = req.body
-    // Check if All Details are there or not
+    // Check if All Details are there or not (Required Fields)
     if (
       !firstName ||
       !lastName ||
@@ -63,13 +63,13 @@ exports.signup = async (req, res) => {
       // OTP not found for the email
       return res.status(400).json({
         success: false,
-        message: "The OTP is not valid",
+        message: "The OTP is invalid",
       })
     } else if (otp !== response[0].otp) {
       // Invalid OTP
       return res.status(400).json({
         success: false,
-        message: "The OTP is not valid",
+        message: "The OTP is invalid",
       })
     }
 
@@ -197,13 +197,15 @@ exports.sendotp = async (req, res) => {
         message: `User is Already Registered`,
       })
     }
-
+    // To generate Numeric OTP
     var otp = otpGenerator.generate(6, {
       upperCaseAlphabets: false,
       lowerCaseAlphabets: false,
       specialChars: false,
     })
-    const result = await OTP.findOne({ otp: otp })
+
+    // code checks the generated OTP is already present in database, it ensures uniqueness of OTP in database
+    let result = await OTP.findOne({ otp: otp })
     console.log("Result is Generate OTP Func")
     console.log("OTP", otp)
     console.log("Result", result)
@@ -211,6 +213,7 @@ exports.sendotp = async (req, res) => {
       otp = otpGenerator.generate(6, {
         upperCaseAlphabets: false,
       })
+      result = await OTP.findOne({ otp: otp });
     }
     const otpPayload = { email, otp }
     const otpBody = await OTP.create(otpPayload)

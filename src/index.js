@@ -19,7 +19,13 @@ root.render(
     <Provider store={store}>
       <BrowserRouter>
         <App />
-        <Toaster />
+        {/* <Toaster /> */}
+        <Toaster
+          reverseOrder={false}
+          toastOptions={{
+            duration: 4000, // Auto-close duration for all toasts
+          }}
+        />
       </BrowserRouter>
     </Provider>
   </React.StrictMode>

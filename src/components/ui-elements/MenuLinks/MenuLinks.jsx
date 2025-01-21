@@ -1,22 +1,58 @@
-import { Link } from "react-router-dom"; // Using React Router for navigation
-
+import { SubLinksBox } from "./LinkSubItems";
+import { ChevronDownIcon } from "@heroicons/react/24/outline";
+import { Link, useNavigate } from "react-router-dom";
 export const MenuLinks = ({ menuLinks }) => {
+  const navigate = useNavigate();
+  console.log("MenuLinks1", menuLinks);
   return (
-    <ul className="flex px-1 lg:px-4 space-x-4">
-      {menuLinks.map((link) => (
-        <li
-          className="p-2 font-semibold rounded-lg cursor-pointer lg:px-4 hover:text-slate-700 text-white hover:bg-slate-200 dark:hover:bg-slate-800 transition-transform duration-300"
-          key={link.name}
-        >
-          <Link
-            to={link.link} // Path to navigate using React Router
-            className="relative group"
-          >
-            {link.name}
-            <span className="absolute left-0 bottom-[-3px] w-0 h-[2px] bg-[#20ff51] transition-all duration-200 group-hover:w-full "></span>
-          </Link>
-        </li>
+    <ul className="flex px-1 lg:px-4">
+      {menuLinks?.map((menuLink) => (
+        <div className="relative group" key={menuLink?.name}>
+          <li className="">
+            <Link
+              to={menuLink?.link}
+              className={`flex dark:hover:bg-slate-800 p-2 font-semibold cursor-pointer md:px-2 lg:px-3 text-white font-roboto hover:text-gray-100 hover:text-slate-300 hover:bg-slate-200 md:text-[1.4vw] lg:text-[1.1vw] ${menuLink?.class}`}
+            >
+              {menuLink?.name}
+              {Array?.isArray(menuLink?.subLinks) &&
+                menuLink?.subLinks?.length !== 0 && (
+                  <div className="w-4 my-auto mx-1">
+                    <ChevronDownIcon />
+                  </div>
+                )}
+            </Link>
+          </li>
+          {Array.isArray(menuLink?.subLinks) &&
+            menuLink?.subLinks?.length !== 0 && (
+              <div className="hidden group-hover:block">
+                <SubLinksBox subLinks={menuLink?.subLinks} />
+              </div>
+            )}
+        </div>
       ))}
+      <div>
+        {localStorage?.getItem("isAdmin") ? (
+          <button
+            className="md:text-[12px] lg:text-[16px] ml-2 bg-[#ff601c] hover:opacity-[0.8] text-white font- py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+            type="submit"
+            onClick={(e) => {
+              navigate("/admin-logout");
+            }}
+          >
+            S.K.S (Admin)
+          </button>
+        ) : (
+          <button
+            className="md:text-[12px] lg:text-[16px] ml-2 bg-[#ff0077] hover:opacity-[0.8] text-white font- py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+            type="submit"
+            onClick={(e) => {
+              navigate("/admin-panel");
+            }}
+          >
+              Admin Panel
+          </button>
+        )}
+      </div>
     </ul>
   );
 };

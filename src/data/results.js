@@ -1,0 +1,32 @@
+export const studentsResult = [
+  {
+    year: 2024,
+    heading: "Best Performance Students in Academic 2024 from Optimal Classes",
+    class12: [{ above90: 30, above80: 45 }],
+    class11: [{ above90: 30, above80: 45, above70: 64, firstDivision: 87 }],
+    class10: [{ above90: 30, above80: 45, above70: 64, firstDivision: 87 }],
+    class9: [{ above90: 30, above80: 45, above70: 64, firstDivision: 87 }],
+    class8: [{ above90: 30, above80: 45, above70: 64, firstDivision: 87 }],
+    class7: [{ above90: 30, above80: 45, above70: 64, firstDivision: 87 }],
+  },
+  {
+    year: 2023,
+    heading: "Best Performance Students in Academic 2023 from Optimal Classes",
+    class12: [{ above90: 30, above80: 45, above70: 64, firstDivision: 87 }],
+    class11: [{ above90: 30, above80: 45, above70: 64, firstDivision: 87 }],
+    class10: [{ above90: 30, above80: 45, above70: 64, firstDivision: 87 }],
+    class9: [{ above90: 30, above80: 45, above70: 64, firstDivision: 87 }],
+    class8: [{ above90: 30, above80: 45, above70: 64, firstDivision: 87 }],
+    class7: [{ above90: 30, above80: 45, above70: 64, firstDivision: 87 }],
+  },
+  {
+    year: 2022,
+    heading: "Best Performance Students in Academic 2022 from Optimal Classes",
+    class12: [{ above90: 30, above80: 45, above70: 64, firstDivision: 87 }],
+    class10: [{ above90: 30, above80: 45, above70: 64, firstDivision: 87 }],
+    class11: [{ above90: 30, above80: 45, above70: 64, firstDivision: 87 }],
+    class9: [{ above90: 30, above80: 45, above70: 64, firstDivision: 87 }],
+    class8: [{ above90: 30, above80: 45, above70: 64, firstDivision: 87 }],
+    class7: [{ above90: 30, above80: 45, above70: 64, firstDivision: 87 }],
+  },
+];

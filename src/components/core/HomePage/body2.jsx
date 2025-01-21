@@ -1,144 +1,143 @@
-import React, {useEffect, useRef} from "react";
-// import ScrollAnimation from "react-animate-on-scroll";
-import useFlipHookAnimaiton from "../../../hooks/animationHook/useFlipHookAnimaiton"
-import useLeftToRightSlideAnimation from "../../../hooks/animationHook/useLeftToRightSlideAnimation"
-
+import React, { useRef } from "react";
+import useScrollAnimation from "../../../hooks/useScrollAnimation";
+import Lottie from "react-lottie";
+import {Link} from 'react-router-dom'
 const PerfectPlatform = () => {
-  const  animationRef1 = useFlipHookAnimaiton("animate-rotateIn");
-  const  animationRef2 = useFlipHookAnimaiton("animate-zoomInRotate");
-  const  animationRef3 = useFlipHookAnimaiton("animate-bounceInDown"); //It comes from navbar to down   
-  const  animationRef4 = useFlipHookAnimaiton("animate-slideInDiagonal"); //From Right to down left   //Good for Card
-  const  animationRef5 = useFlipHookAnimaiton("animate-flipInDiagonal"); //Flip diagonally at own place  //Good for Card
-  const  animationRef6 = useFlipHookAnimaiton("animate-scaleInSkew"); // Good for Card
-  const  animationRef7 = useFlipHookAnimaiton("animate-rippleIn"); // Better for Card
-  const  animationRef8 = useFlipHookAnimaiton("animate-dropIn");  // Like water droplet from top to bottom
-  const  animationRef9 = useFlipHookAnimaiton("animate-waveIn"); // From left to right // Good for Card
-  const  animationRef10 = useFlipHookAnimaiton("animate-expandHorizontal"); // Like slow rotation in z axis // Goood for card and text
-  
+  const animationRef5 = useScrollAnimation("animate-flipInX");
+  const animationRef6 = useScrollAnimation("animate-flipInX");
+  const animationRef7 = useScrollAnimation("animate-flipInX");
+  const animationRef8 = useScrollAnimation("animate-flipInX");
+  const animationRef9 = useScrollAnimation("animate-flipInX");
+
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth", // Smooth scrolling
+    });
+  };
+
   return (
-    <section className="py-16  bg-gray-25 ">
-      <h2 className="text-4xl font-bold text-center mb-8">
-        The perfect platform to boost your
-        <span className="bg-gradient-to-b from-[#864135] to-[#F09819] text-transparent bg-clip-text font-bold">
-          {" "}
-          technical skills{" "}
+    <section className="py-16">
+      <h2 className="text-[14px] md:text-xl lg:text-2xl font-bold py-3 md:py-2 text-center mb-4 text-white bg-[#ff0b0b]">
+        <span className="bg-gradient-to-b py-4 from-[#fff5f3] to-[#ffffff] text-transparent bg-clip-text font-bold">
+        TOP RATED COACHING CLASSES IN VARANASI
         </span>
       </h2>
-      <div className="flex flex-col md:flex-row justify-center items-center gap-8">
+
+      <h2 className="text-[14px] md:text-xl lg:text-2xl md:mt-8 font-bold py-2 md:py-2 text-center text-white bg-[#ff0b0b] mb-10">
+        <span className="bg-gradient-to-b py-4 from-[#fff5f3] to-[#ffffff] text-transparent bg-clip-text font-bold">
+          OUR BATCHES
+        </span>
+      </h2>
+
+      {/* <div className="flex flex-col md:flex-row md:flex-flow justify-center items-center"> */}
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-1 justify-center items-center mt-20 md:px-8">
         {/* <ScrollAnimation animateIn="flipInX"> */}
-          <div ref={animationRef10} className="bg-white p-6 rounded-lg shadow-md text-center max-w-sm">
-            <img
-              className="mx-auto mb-4"
-              src="https://blob.sololearn.com/assets/home-perfect-platform-1-rebranding.svg"
-              alt="sl-home-perfect-img"
-              loading="lazy"
-            />
-            <div className="text-xl font-semibold mb-2">Students</div>
-            <span className="text-gray-600 mb-4 block">
-              Prepping for the big test or want to ace your first interview? Use
-              Sololearn's real-world practice to reinforce what you've learned
-              and get you ready for that big moment.
-            </span>
-            <a
-              type="button"
-              className="text-center text-[13px] sm:text-[16px] px-6 py-4 rounded-md font-bold shadow-[2px_2px_0px_0px_rgba(255,255,255,0.18)] hover:shadow-none hover:scale-95 transition-all duration-200 bg-blue-500 text-white"
-              href="/signup"
-            >
-              Learn for free
-            </a>
+        <div className="py-12 group relative bg-[#f4f4f4] m-3 p-6 rounded-lg shadow-lg shadow-[#8b8b8b] text-center    transition-all duration-200 overflow-hidden hover:scale-105">
+          {/* Lottie Animation */}
+          <div className="relative z-10 w-[120px] mx-auto mb-4">
+            <img src="/images/nurturing.webp" className="" alt="..." />
           </div>
-        {/* </ScrollAnimation> */}
-        <div className="bg-white p-6 rounded-lg shadow-md text-center max-w-sm">
-          <img
-            className="mx-auto mb-4"
-            src="https://assets.sololearn.com/home-perfect-platform-2.svg"
-            alt="sl-home-perfect-img"
-            loading="lazy"
-          />
-          <div className="text-xl font-semibold mb-2">Professionals</div>
-          <span className="text-gray-600 mb-4 block">
-            You can learn something totally new to advance your career. Or maybe
-            you just want to knock off the rust. Try Sololearn to get access to
-            a variety of courses, from machine learning to web development.
+          {/* Title */}
+          <div className="relative z-10 text-xl text-[#b51616] font-cinzel font-semibold mb-2 transition-transform duration-200">
+            Pre-Foundation
+          </div>
+          <div className="mx-[20%] py-1 relative z-10 text-xl font-[2px] bg-[#ffd724] rounded-[10px] text-black transition-transform duration-200 font-rubik-vinyl mb-8">
+            Class 7 to 10
+          </div>
+          {/* Description */}
+          <span className="relative z-10 text-black mb-4 block transition-opacity duration-200 text-justify">
+            Preparing for exams, building a strong foundation, or excelling
+            academically? Our expert guidance and proven strategies help Class 7
+            to 10 students master subjects like Science, Math, and English with
+            ease. Engage in personalized mentoring, interactive learning
+            methods, and confidence-building techniques tailored to every
+            student’s needs. We ensure you’re well-prepared for school exams and
+            future academic challenges, setting a solid foundation for higher
+            studies and lifelong success.
           </span>
-          <a
+          {/* Button */}
+          <Link
             type="button"
-            className="text-center text-[13px] sm:text-[16px] px-6 py-4 rounded-md font-bold shadow-[2px_2px_0px_0px_rgba(255,255,255,0.18)] hover:shadow-none hover:scale-95 transition-all duration-200 bg-blue-500 text-white"
-            href="/signup"
+            className="relative z-10 text-center text-[16px] text-roboto sm:text-[16px] w-[300px] md:w-[80%] py-2 font-bold rounded-full bg-[#b51616] hover:bg-[#c84343] transition-all duration-100 text-white mt-4 mb-4"
+            to="/class-7t10"
+            onClick={scrollToTop}
           >
-            Boost your career
-          </a>
+            Learn more
+          </Link>
+          {/* Hover Overlay (Optional for Visual Feedback) */}
+          <div className="absolute inset-0 bg-transparent group-hover:bg-[#e1e1e1] transition-all duration-200"></div>
         </div>
-      </div>
-
-      <div className="text-center mb-8 mt-[90px]">
-        <h2 className="font-black text-black text-4xl text-heading uppercase">
-          Why{" "}
-          <span className="bg-gradient-to-b from-[#864135] to-[#F09819] text-transparent bg-clip-text font-bold">
-            {" "}
-            Code{" "}
+        <div className="py-12 group relative bg-[#f4f4f4] m-3 p-6 rounded-lg shadow-lg shadow-[#8b8b8b] text-center     transition-all duration-200 overflow-hidden hover:scale-105">
+          {/* Lottie Animation */}
+          <div className="relative z-10 w-[120px] mx-auto mb-4">
+            <img src="/images/foundation.webp" className="" alt="..." />
+          </div>
+          {/* Title */}
+          <div className="relative z-10 text-xl text-[#b51616] font-cinzel font-semibold mb-2 transition-transform duration-200">
+            Foundation
+          </div>
+          <div className="mx-[20%] py-1 relative z-10 text-xl font-[2px] bg-[#ffd724] rounded-[10px] text-black transition-transform duration-200 font-rubik-vinyl mb-8">
+            Class 11th ,12th
+          </div>
+          {/* Description */}
+          <span className="relative z-10 text-black mb-4 block transition-opacity duration-200 text-justify">
+            Transitioning into Class 11th and 12th? These crucial years are the
+            foundation of your future success. Master advanced concepts in
+            Physics, Chemistry, Mathematics, or Biology with our expert-led,
+            personalized guidance. Our program equips you with essential
+            problem-solving skills, effective study strategies, and the
+            confidence to excel in board exams, competitive exams like JEE and
+            NEET, and beyond. Unlock your potential and pave the way for a
+            bright future today!
           </span>
-        </h2>
-      </div>
-      <div className="flex flex-col md:flex-row justify-center items-center gap-8">
-        <div className="bg-white p-6 rounded-lg shadow-md text-center max-w-xs">
-          <div className="mb-4">
-            <img
-              className="mx-auto"
-              src="https://assets.sololearn.com/home-why-code-1.svg"
-              alt="why-code-icon"
-              loading="lazy"
-            />
-          </div>
-          <div className="text-xl font-semibold mb-2">It's popular</div>
-          <div className="text-gray-600">
-            <strong>Technical skills are in high demand.</strong> Over 60% of
-            new jobs worldwide will require tech skills.
-          </div>
+          {/* Button */}
+          <Link
+            type="button"
+            className="relative z-10 text-center text-[16px] text-roboto sm:text-[16px] w-[300px] md:w-[80%] py-2 font-bold rounded-full bg-[#b51616] hover:bg-[#c84343] transition-all duration-100 text-white mt-4 mb-4"
+            to="/class-10t12"
+            onClick={scrollToTop}
+          >
+            Learn more
+          </Link>
+          {/* Hover Overlay (Optional for Visual Feedback) */}
+          <div className="absolute inset-0 bg-transparent group-hover:bg-[#e1e1e1] transition-all duration-200"></div>
         </div>
-        <div className="bg-white p-6 rounded-lg shadow-md text-center max-w-xs">
-          <div className="mb-4">
-            <img
-              className="mx-auto"
-              src="https://assets.sololearn.com/home-why-code-2.svg"
-              alt="why-code-icon"
-              loading="lazy"
-            />
+        <div className="py-12 group relative bg-[#f4f4f4] m-3 p-6 rounded-lg shadow-lg shadow-[#8b8b8b] text-center     transition-all duration-200 overflow-hidden hover:scale-105">
+          {/* Lottie Animation */}
+          <div className="relative z-10 w-[120px] mx-auto mb-4">
+            <img src="/images/target.webp" className="" alt="..." />
           </div>
-          <div className="text-xl font-semibold mb-2">It's promising</div>
-          <div className="text-gray-600">
-            Unlock your earning potential! Entry-level programmers in the U.S.
-            earn on <strong>average over $78,000 in salary.</strong>
+          {/* Title */}
+          <div className="relative z-10 text-xl text-[#b51616] font-cinzel font-semibold mb-2 transition-transform duration-200">
+             Aspiring Minds
           </div>
-        </div>
-        <div className="bg-white p-6 rounded-lg shadow-md text-center max-w-xs">
-          <div className="mb-4">
-            <img
-              className="mx-auto"
-              src="https://assets.sololearn.com/home-why-code-3.svg"
-              alt="why-code-icon"
-              loading="lazy"
-            />
+          <div className="mx-[20%] py-1 relative z-10 text-xl font-[2px] bg-[#ffd724] rounded-[10px] text-black transition-transform duration-200 font-rubik-vinyl mb-8">
+            IIT-JEE / NEET
           </div>
-          <div className="text-xl font-semibold mb-2">It's fun</div>
-          <div className="text-gray-600">
-            Imagine combining your passion and skill with your creativity, and{" "}
-            <strong>making something new everyday!</strong>
-          </div>
+          {/* Description */}
+          <span className="relative z-10 text-black mb-4 block transition-opacity duration-200 text-justify">
+            Dreaming of securing a seat in top IITs? Unlock your potential with
+            our expert-led IIT-JEE preparation program. Gain mastery over
+            Physics, Chemistry, and Mathematics through structured lessons,
+            problem-solving sessions, and in-depth conceptual clarity. Our
+            proven strategies, personalized mentoring, and rigorous test series
+            ensure you're ready to excel in JEE Main and Advanced. Start your
+            journey to IIT success today!
+          </span>
+          {/* Button */}
+          <Link
+            type="button"
+            className="relative z-10 text-center text-[16px] text-roboto sm:text-[16px] w-[300px] md:w-[80%] py-2 font-bold rounded-full bg-[#b51616] hover:bg-[#c84343] transition-all duration-100 text-white mt-4 mb-4"
+             to="/iit-jee-neet"
+             onClick={scrollToTop}
+          >
+            Learn more
+          </Link>
+          {/* Hover Overlay (Optional for Visual Feedback) */}
+          <div className="absolute inset-0 bg-transparent group-hover:bg-[#e1e1e1] transition-all duration-200"></div>
         </div>
       </div>
-      <div className="text-center mt-8 mb-12">
-        <a
-          type="button"
-          className="text-center text-[13px] sm:text-[16px] px-6 py-4 rounded-md font-bold shadow-[2px_2px_0px_0px_rgba(255,255,255,0.18)] hover:shadow-none hover:scale-95 transition-all duration-200 bg-blue-500 text-white"
-          href="/signup"
-        >
-          I want to code
-        </a>
-      </div>
-
-      {/* Slanted Line */}
-      <div className="relative w-full h-0 border-t-[110px] border-transparent border-r-[160vw] border-r-gray-25 transform rotate-2 -mt-10 -ml-40 -mb-24"></div>
     </section>
   );
 };

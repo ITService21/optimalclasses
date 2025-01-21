@@ -1,81 +1,70 @@
-import { faBookmark, faChalkboardTeacher, faCloud, faCreditCard, faUserShield, faVideo } from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import React from 'react';
-
-
-
-const featuresData = {
-  id: "features",
-  tagline: "Features",
-  items: [
-    {
-      icon: faUserShield,
-      title: "User Authentication and Authorization",
-      description: "Secure login and sign-up with email, OTP verification, and password recovery.",
-    },
-    {
-      icon: faChalkboardTeacher,
-      title: "Course Management",
-      description: "Instructors can create, update, and manage course content, while students can view and rate courses.",
-    },
-    {
-      icon: faCreditCard,
-      title: "Payment Integration",
-      description: "Seamless checkout process with Razorpay for course purchases and enrollments.",
-    },
-    {
-      icon: faCloud,
-      title: "Cloud-based Media Management",
-      description: "Efficient storage and management of media content using Cloudinary.",
-    },
-    {
-      icon: faVideo,
-      title: "Virtual Rooms",
-      description: "Collaborative virtual rooms featuring whiteboards, screen sharing, real-time chat, and audio/video conferencing.",
-    },
-    {
-      icon: faBookmark,
-      title: "Bookmark and Like",
-      description: "Users can bookmark and like their favorite questions and answers for easy access.",
-    },
-  ],
-};
-
-
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
 const Features = () => {
+  const [expanded, setExpanded] = useState(false);
+
+  const toggleReadMore = () => {
+    setExpanded(!expanded);
+  };
+
   return (
-    <section className="relative not-prose scroll-mt-[72px] text-white mt-[80px]" id="features">
-
-        <div className="text-center md:mx-auto mb-8 md:mb-12 max-w-3xl">
-            <p className="font-black text-sky-400 text-2xl text-heading uppercase">Features</p>
-            <h2 className="font-bold font-heading leading-tighter tracking-tighter text-heading md:text-4xl text-3xl">What you get with GetSkilledOnline</h2>
-            <p className="text-xl mt-3 text-richblack-25">GetSkilledOnline offers a cutting-edge platform for education, designed with top-notch features and exceptional user experience.</p>
+    <section
+      className="relative not-prose scroll-mt-[72px] text-white mt-[80px]"
+      id="features"
+    >
+      <div className="bg-yellow-5 pt-[40px] pb-10">
+        <div className="text-clip bg-clip-text font-bold text-[#ff0b0b] text-[24px] md:text-2xl lg:text-4xl text-center md:mb-4 px-3">
+          Transforming Education in Varanasi
         </div>
-
-        <div className="grid md:gap-y-12 sm:grid-cols-2">
-            {featuresData.items.map((item, index) => (
-                  <div>
-                    <div key={index} className="flex flex-row max-w-md mx-auto">
-                        <div>
-                            <span className="flex justify-center align-middle mr-4 -mt-[5px] bg-primary h-10 md:h-12 md:p-3 md:w-12 p-2 rounded-full text-white w-10">
-                                <FontAwesomeIcon icon={item.icon} className="w-6 h-6 -mt-3 text-white bg-[#4a67e7] p-3.5 rounded-full"/>
-                            </span>
-                        </div>
-
-                        <div className="mt-0.5">
-                            <h4 className="font-bold text-xl md:text-[1.3rem]">{item.title}</h4>
-                            <p className="mt-1 text-richblack-200">{item.description}</p>
-                        </div>
-                    </div>
-                  </div>
-        ))}
+        <div className="grid grid-cols-1 md:grid-cols-2 md:gap-6 px-4 md:px-10 ">
+          <div className="flex flex-col">
+            <div
+              className={`text-black text-[18px] font-cinzel  my-[40px] text-justify flex md:gap-5 flex-col ${
+                expanded ? "" : "overflow-hidden max-h-[4000px]"
+              } transition-all duration-300`}
+            >
+              Looking for the best coaching institute in Varanasi to boost
+              academic excellence for students from Class 7 to 12? Your search
+              ends here! Our institute is committed to nurturing young minds
+              through exceptional academic support and a strong focus on
+              conceptual clarity. With a team of highly experienced faculty, we
+              aim to simplify complex topics in Physics, Chemistry, Biology, and
+              Mathematics, laying a strong foundation for academic success. Our
+              structured curriculum and engaging teaching techniques are
+              designed to make learning both effective and enjoyable.
+              <br />
+              <br />
+              Understanding that every student learns differently, we provide
+              personalized mentoring and regular doubt-clearing sessions
+              tailored to individual needs. Our comprehensive study materials,
+              weekly tests, and periodic assessments help students track their
+              progress and overcome challenges. We also emphasize continuous
+              improvement through practice and revision, ensuring students excel
+              in school exams while building long-term confidence in their
+              abilities.
+              <br />
+              <br />
+              Situated in the heart of Varanasi, our institute fosters a
+              disciplined, goal-oriented environment ideal for academic growth.
+              By addressing the core academic requirements of Classes 7 to 12,
+              we prepare students not only for school exams but also for a
+              lifetime of learning. Join us to experience a holistic approach to
+              education and empower your child with the knowledge and skills to
+              excel in every aspect of academics.
+              {/* <span className="text-[#ff3737]">Read More</span> */}
+            </div>
+          </div>
+          <div className=" my-[20px] md:-mr-[14px]">
+            <img
+              src="/images/landingBottom_.jpeg"
+              className="w-full h-full float-right rounded-[10px] shadow-md shadow-gray-300"
+              alt="pic not load"
+            />
+          </div>
         </div>
-   
+      </div>
     </section>
   );
 };
 
 export default Features;
-
-
- 
