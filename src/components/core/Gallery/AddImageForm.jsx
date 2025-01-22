@@ -44,7 +44,7 @@ function AddImageForm({ onAddImage, fetchImages }) {
         // Send to server
         const response = await axios.post(
         //   "http://localhost:5005/images",
-          `${apiUrl}/images`,
+          `${apiUrl?apiUrl:""}/images`,
           formData,
           {
             headers: {

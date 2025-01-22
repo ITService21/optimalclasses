@@ -19,7 +19,7 @@ function AdminLogin() {
 
       console.log("aaaaaa1",apiUrl, process.env.REACT_APP_API_URL_PROD )
     //   const response = await axios.post('http://localhost:5005/api/login', {
-      const response = await axios.post(`${apiUrl}/api/login`, {
+      const response = await axios.post(`${apiUrl?apiUrl:""}/api/login`, {
         email,
         password,
       });

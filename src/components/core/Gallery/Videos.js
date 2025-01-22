@@ -31,7 +31,7 @@ function VideoManager() {
   const fetchVideos = async () => {
     try {
     //   const response = await axios.get("http://localhost:5005/videos");
-      const response = await axios.get(`${apiUrl}/videos`);
+      const response = await axios.get(`${apiUrl?apiUrl:""}/videos`);
       setVideos(response.data);
     } catch (error) {
       toast.error("Video Loading Failed!");
@@ -44,7 +44,7 @@ function VideoManager() {
     e.preventDefault();
     try {
     //   const response = await axios.post("http://localhost:5005/videos", {
-      const response = await axios.post(`${apiUrl}/videos`, {
+      const response = await axios.post(`${apiUrl?apiUrl:""}/videos`, {
         title,
         description,
         url,
@@ -66,7 +66,7 @@ function VideoManager() {
     if (window.confirm("Are you sure you want to delete this video?")) {
       try {
         // await axios.delete(`http://localhost:5005/videos/${id}`);
-        await axios.delete(`${apiUrl}/videos/${id}`);
+        await axios.delete(`${apiUrl?apiUrl:""}/videos/${id}`);
         setVideos((prev) => prev?.filter((video) => video?.id !== id));
         toast.success("Video Deleted Successfully!");
       } catch (error) {

@@ -17,7 +17,7 @@ export default function Album() {
   //   : 'http://localhost:5005/images'; // Development URL
 
   // const API_URL = `http://localhost:5005/images`;
-  const API_URL = `${apiUrl}/images`;
+  const API_URL = `${apiUrl?apiUrl:""}/images`;
 
   const fetchImages = async () => {
     try{   const response = await axios.get(API_URL);

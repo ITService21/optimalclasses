@@ -46,7 +46,7 @@ function AcademicTeam() {
 
   const fetchTeachers = async () => {
     try {
-      const { data } = await axios.get(`${apiUrl}/teachers`);
+      const { data } = await axios.get(`${apiUrl?apiUrl:""}/teachers`);
       setTeachers(data);
     } catch (error) {
       toast.error("Fetching Teacher's Data Failed!");
@@ -57,7 +57,7 @@ function AcademicTeam() {
   const addTeacher = async (form) => {
     setLoading(true);
     try {
-      const response = await axios.post(`${apiUrl}/teachers`, form);
+      const response = await axios.post(`${apiUrl?apiUrl:""}/teachers`, form);
       toast.success("Teacher Added Successfully!");
       setLoading(false);
     } catch (error) {
@@ -74,7 +74,7 @@ function AcademicTeam() {
       //   form
       // );
       const response = await axios.put(
-        `${apiUrl}/teachers/${formData?.id}`,
+        `${apiUrl?apiUrl:""}/teachers/${formData?.id}`,
         form
       );
       toast.success("Teacher's Detail Updated Successfully!");
@@ -159,7 +159,7 @@ function AcademicTeam() {
     try {
       if (window?.confirm("Are you sure you want to delete this teacher?")) {
         // await axios.delete(`http://localhost:5005/teachers/${id}`);
-        await axios.delete(`${apiUrl}/teachers/${id}`);
+        await axios.delete(`${apiUrl?apiUrl:""}/teachers/${id}`);
         fetchTeachers();
         toast.success("Teacher Deleted Successfully!");
       }
