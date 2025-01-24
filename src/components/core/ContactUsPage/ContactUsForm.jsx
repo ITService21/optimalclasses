@@ -46,7 +46,8 @@ const ContactUsForm = () => {
       }
       setLoading(true);
       // const res = await axios.post("http://localhost:5005/contact", data);
-      const res = await axios.post(`${apiUrl?apiUrl:""}/contact`, data);
+      const res = await axios.post(`${apiUrl}/contact`, data);
+      console.log("sgsddgg1",data)
       if (res?.status === 200) {
         console.log("Email sent successfully:", res?.data?.message);
       } else {
@@ -170,7 +171,7 @@ const ContactUsForm = () => {
           </div>
           <div className="flex w-[calc(100%-90px)] flex-col gap-2">
             <input
-              type="phone"
+              type="text"
               name="phoneNo"
               id="phoneNo"
               placeholder="12345 67890"

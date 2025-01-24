@@ -26,7 +26,7 @@ const ImageItem = React.memo(({ imgObj, index, isAdmin, onDeleteImage }) => {
 
       <div className="w-full">
         <img
-          src={imgObj?.src}
+          src={imgObj?.url}
           className="w-full aspect-[400/300] h-full object-contain bg-gradient-to-b from-[#EE9CA7] to-[#cbfe90]"
           alt="Img not load"
           loading="lazy"
@@ -88,7 +88,9 @@ function ImageList({ images, onDeleteImage, addImage, fetchImages }) {
                 imgObj={imgObj}
                 index={index + startIndex} // Adjusting the index based on the current page
                 isAdmin={isAdmin}
-                onDeleteImage={onDeleteImage}
+                onDeleteImage={ ()=>{
+                  onDeleteImage(imgObj?.id)
+                }}
               />
             </>
           );

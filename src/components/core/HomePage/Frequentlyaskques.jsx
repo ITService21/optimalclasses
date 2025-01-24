@@ -228,7 +228,7 @@ const FAQSection = () => {
     try {
       const res = await axios.post(
         // "http://localhost:5005/contact-landing-page",
-        `${apiUrl?apiUrl:""}/contact-landing-page`,
+        `${apiUrl}/contact-landing-page`,
         newQuestion
       );
       if (res?.status === 200) {

@@ -31,7 +31,7 @@ function VideoManager() {
   const fetchVideos = async () => {
     try {
     //   const response = await axios.get("http://localhost:5005/videos");
-      const response = await axios.get(`${apiUrl?apiUrl:""}/videos`);
+      const response = await axios.get(`${apiUrl}/videos`);
       setVideos(response.data);
     } catch (error) {
       toast.error("Video Loading Failed!");
@@ -44,7 +44,7 @@ function VideoManager() {
     e.preventDefault();
     try {
     //   const response = await axios.post("http://localhost:5005/videos", {
-      const response = await axios.post(`${apiUrl?apiUrl:""}/videos`, {
+      const response = await axios.post(`${apiUrl}/videos`, {
         title,
         description,
         url,
@@ -66,9 +66,10 @@ function VideoManager() {
     if (window.confirm("Are you sure you want to delete this video?")) {
       try {
         // await axios.delete(`http://localhost:5005/videos/${id}`);
-        await axios.delete(`${apiUrl?apiUrl:""}/videos/${id}`);
+        await axios.delete(`${apiUrl}/videos/${id}`);
         setVideos((prev) => prev?.filter((video) => video?.id !== id));
         toast.success("Video Deleted Successfully!");
+        fetchVideos();
       } catch (error) {
         toast.error("Video Deletion Failed!");
         console.error("Error deleting video:", error);
@@ -151,7 +152,7 @@ function VideoManager() {
                 {isAdmin && (
                   <div className="text-center">
                     <button
-                      onClick={() => handleDeleteVideo(video?.id)}
+                      onClick={() => handleDeleteVideo(video?._id)}
                       className="bg-red-500 hover:bg-red-700 text-white px-4 py-1 rounded mt-2 mx-auto"
                     >
                       Delete Video

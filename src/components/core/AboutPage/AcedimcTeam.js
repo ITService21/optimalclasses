@@ -46,8 +46,9 @@ function AcademicTeam() {
 
   const fetchTeachers = async () => {
     try {
-      const { data } = await axios.get(`${apiUrl?apiUrl:""}/teachers`);
-      setTeachers(data);
+      // const { data } = await axios.get(`${apiUrl}/teachers`);
+      const data = await axios.get(`${apiUrl}/teachers`);
+      setTeachers(data?.data);
     } catch (error) {
       toast.error("Fetching Teacher's Data Failed!");
       console.error("Failed to fetch teachers data: ", error);
@@ -57,7 +58,7 @@ function AcademicTeam() {
   const addTeacher = async (form) => {
     setLoading(true);
     try {
-      const response = await axios.post(`${apiUrl?apiUrl:""}/teachers`, form);
+      const response = await axios.post(`${apiUrl}/teachers`, form);
       toast.success("Teacher Added Successfully!");
       setLoading(false);
     } catch (error) {
@@ -74,7 +75,7 @@ function AcademicTeam() {
       //   form
       // );
       const response = await axios.put(
-        `${apiUrl?apiUrl:""}/teachers/${formData?.id}`,
+        `${apiUrl}/teachers/${formData?._id}`,
         form
       );
       toast.success("Teacher's Detail Updated Successfully!");
@@ -129,11 +130,12 @@ function AcademicTeam() {
       // Perform further operations after appending Base64 `photo`
       // e.g., submit the form
 
-      if (formData?.id) {
+      if (formData?._id) {
         await updateTeacher(form);
       } else {
         await addTeacher(form);
       }
+      fetchTeachers()
     } catch (error) {
       console.error("Error handling form submission: ", error);
       toast.error("Something went wrong!");
@@ -155,11 +157,11 @@ function AcademicTeam() {
     }
   };
 
-  const handleDelete = async (id) => {
+  const handleDelete = async (_id) => {
     try {
       if (window?.confirm("Are you sure you want to delete this teacher?")) {
         // await axios.delete(`http://localhost:5005/teachers/${id}`);
-        await axios.delete(`${apiUrl?apiUrl:""}/teachers/${id}`);
+        await axios.delete(`${apiUrl}/teachers/${_id}`);
         fetchTeachers();
         toast.success("Teacher Deleted Successfully!");
       }
@@ -174,7 +176,7 @@ function AcademicTeam() {
       ...teacher,
       photo: null,
       photoPreview: teacher?.photo
-        ? teacher.photo.replace("../public", "")
+        ? teacher.photo 
         : null,
     });
   };
@@ -213,13 +215,14 @@ function AcademicTeam() {
         Our Academic Team
       </div>
       <ul className="grid grid-cols-1 md:grid-cols-1 lg:grid-cols-1 gap-4 list-none ">
-        {teachers?.map((teacher) => (
-          <li
-            key={teacher?.id}
+      {teachers?.map((teacher) => {
+          console.log("dhdhh43",teacher)
+          return <li
+            key={teacher?._id}
             className="bg-gradient-to-b py-6 from-[#64d1cf] to-[#64d1cf] mx-[10px] md:mx-[200px] lg:mx-[300px] pb-10 mb-10 rounded-md"
           >
             <img
-              src={teacher?.photo?.replace("../public", "")}
+              src={teacher?.photoUrl}
               alt={teacher?.name}
               className="w-[250px] h-[250px] mx-auto"
             />
@@ -241,26 +244,27 @@ function AcademicTeam() {
                   className="bg-[#ff2323] hover:bg-[#c73030] px-4 border-[1px] border-black"
                   onClick={() => handleEdit(teacher)}
                 >
-                  {formData?.id === teacher?.id
+                  {formData?._id === teacher?._id
                     ? "Go to 'Add Teacher' form below"
                     : "Edit"}
                 </button>
                 <button
                   className="bg-[#ff2323] hover:bg-[#c73030] px-4 border-[1px] border-black"
-                  onClick={() => handleDelete(teacher.id)}
+                  onClick={() => handleDelete(teacher?._id)}
                 >
                   Delete
                 </button>
               </div>
             )}
           </li>
-        ))}
+        }
+        )}
 
         {(isAdmin && teachers?.length <= teacherCapacity) ||
-        (formData?.id && isAdmin) ? (
+        (formData?._id && isAdmin) ? (
           <div className="bg-[#9f9f9f] mb-10 mt-2 md:w-[50%] mx-auto">
             <h2 className="text-[#750f0f] font-bold text-center text-[34px] font-rubik-vinyl my-2">
-              {formData.id ? "Update Teacher Here" : "Add Teacher"}
+              {formData._id ? "Update Teacher Here" : "Add Teacher"}
             </h2>
             <form onSubmit={handleSubmit} className="grid grid-cols-1 gap-4">
               <input
@@ -313,7 +317,7 @@ function AcademicTeam() {
                     type="file"
                     onChange={handleFileChange}
                     className="hidden-file-input ml-2"
-                    required={!formData?.id}
+                    required={!formData?._id}
                   />
                 </label>
               </div>
@@ -328,11 +332,11 @@ function AcademicTeam() {
               )}
               <div className="text-center">
                 <Button
-                  disabled={btnDisable}
+                  disabled={loading}
                   loading={loading}
                   type="submit"
                   className="bg-[#2dc032] hover:bg-green-700 text-white px-4 py-2 rounded mx-auto m-1 w-[70vw] md:w-[20vw] mb-12"
-                  text={formData?.id ? "Update Teacher" : "Add Teacher"}
+                  text={formData?._id ? "Update Teacher" : "Add Teacher"}
                 ></Button>
               </div>
             </form>

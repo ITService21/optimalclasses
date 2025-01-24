@@ -17,7 +17,7 @@ export default function Album() {
   //   : 'http://localhost:5005/images'; // Development URL
 
   // const API_URL = `http://localhost:5005/images`;
-  const API_URL = `${apiUrl?apiUrl:""}/images`;
+  const API_URL = `${apiUrl}/images`;
 
   const fetchImages = async () => {
     try{   const response = await axios.get(API_URL);
@@ -40,9 +40,9 @@ export default function Album() {
   };
 
   // Delete image
-  const deleteImage = async (index) => {
+  const deleteImage = async (id) => {
     try{
-      await axios.delete(`${API_URL}/${index}`);
+      await axios.delete(`${API_URL}/${id}`);
       toast.success("Image Deleted Successfully!")
       fetchImages();
     }

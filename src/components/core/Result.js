@@ -28,25 +28,12 @@ function Result() {
               {yearRecord?.class12?.map((record) => {
                 return (
                   <div className="mb-4">
-                    <h3 className="text-[#0f0f0f] text-[18px] md:text-[20px] lg:text-[20px] font-roboto text-start">
-                      Total Students Score above 90% :
-                      <span className="text-[#b51253] text-[18px] md:text-[20px] lg:text-[20px] font-semibold">{` ${record?.above90}`}</span>
-                    </h3>
-                    <h3 className="text-[#0f0f0f] text-[18px] md:text-[22px] lg:text-[20px] font-roboto text-start">
-                      Total Students Score above 80%:
-                      <span className="text-[#b51253] text-[18px] md:text-[20px] lg:text-[20px]   font-semibold">{` ${record?.above80}`}</span>
-                    </h3>
-                  </div>
-                );
-              })}
-            </div>
-            <div className="flex flex-col items-center mt-4">
-              <h3 className="text-[#202020] text-[21px] md:text-[28px] lg:text-[30px] font-semibold font-cinzel text-start ">
-                Best Performance in Class 11 :
-              </h3>
-              {yearRecord?.class12?.map((record) => {
-                return (
-                  <div className="mb-4">
+                    {record?.above95 ? (
+                      <h3 className="text-[#0f0f0f] text-[18px] md:text-[20px] lg:text-[20px] font-roboto text-start">
+                        Total Students Score above 95% :
+                        <span className="text-[#b51253] text-[18px] md:text-[20px] lg:text-[20px] font-semibold">{` ${record?.above95}`}</span>
+                      </h3>
+                    ):""}
                     <h3 className="text-[#0f0f0f] text-[18px] md:text-[20px] lg:text-[20px] font-roboto text-start">
                       Total Students Score above 90% :
                       <span className="text-[#b51253] text-[18px] md:text-[20px] lg:text-[20px] font-semibold">{` ${record?.above90}`}</span>
@@ -63,67 +50,15 @@ function Result() {
               <h3 className="text-[#202020] text-[21px] md:text-[28px] lg:text-[30px] font-semibold font-cinzel text-start ">
                 Best Performance in Class 10 :
               </h3>
-              {yearRecord?.class12?.map((record) => {
+              {yearRecord?.class10?.map((record) => {
                 return (
                   <div className="mb-4">
-                    <h3 className="text-[#0f0f0f] text-[18px] md:text-[20px] lg:text-[20px] font-roboto text-start">
-                      Total Students Score above 90% :
-                      <span className="text-[#b51253] text-[18px] md:text-[20px] lg:text-[20px] font-semibold">{` ${record?.above90}`}</span>
-                    </h3>
-                    <h3 className="text-[#0f0f0f] text-[18px] md:text-[22px] lg:text-[20px] font-roboto text-start">
-                      Total Students Score above 80%:
-                      <span className="text-[#b51253] text-[18px] md:text-[20px] lg:text-[20px]   font-semibold">{` ${record?.above80}`}</span>
-                    </h3>
-                  </div>
-                );
-              })}
-            </div>
-            <div className="flex flex-col items-center mt-4">
-              <h3 className="text-[#202020] text-[21px] md:text-[28px] lg:text-[30px] font-semibold font-cinzel text-start ">
-                Best Performance in Class 9 :
-              </h3>
-              {yearRecord?.class12?.map((record) => {
-                return (
-                  <div className="mb-4">
-                    <h3 className="text-[#0f0f0f] text-[18px] md:text-[20px] lg:text-[20px] font-roboto text-start">
-                      Total Students Score above 90% :
-                      <span className="text-[#b51253] text-[18px] md:text-[20px] lg:text-[20px] font-semibold">{` ${record?.above90}`}</span>
-                    </h3>
-                    <h3 className="text-[#0f0f0f] text-[18px] md:text-[22px] lg:text-[20px] font-roboto text-start">
-                      Total Students Score above 80%:
-                      <span className="text-[#b51253] text-[18px] md:text-[20px] lg:text-[20px]   font-semibold">{` ${record?.above80}`}</span>
-                    </h3>
-                  </div>
-                );
-              })}
-            </div>
-            <div className="flex flex-col items-center mt-4">
-              <h3 className="text-[#202020] text-[21px] md:text-[28px] lg:text-[30px] font-semibold font-cinzel text-start ">
-                Best Performance in Class 8 :
-              </h3>
-              {yearRecord?.class12?.map((record) => {
-                return (
-                  <div className="mb-4">
-                    <h3 className="text-[#0f0f0f] text-[18px] md:text-[20px] lg:text-[20px] font-roboto text-start">
-                      Total Students Score above 90% :
-                      <span className="text-[#b51253] text-[18px] md:text-[20px] lg:text-[20px] font-semibold">{` ${record?.above90}`}</span>
-                    </h3>
-                    <h3 className="text-[#0f0f0f] text-[18px] md:text-[22px] lg:text-[20px] font-roboto text-start">
-                      Total Students Score above 80%:
-                      <span className="text-[#b51253] text-[18px] md:text-[20px] lg:text-[20px]   font-semibold">{` ${record?.above80}`}</span>
-                    </h3>
- 
-                  </div>
-                );
-              })}
-            </div>
-            <div className="flex flex-col items-center mt-4">
-              <h3 className="text-[#202020] text-[21px] md:text-[28px] lg:text-[30px] font-semibold font-cinzel text-start ">
-                Best Performance in Class 7 :
-              </h3>
-              {yearRecord?.class12?.map((record) => {
-                return (
-                  <div className="mb-4">
+                    {record?.above95 ? (
+                      <h3 className="text-[#0f0f0f] text-[18px] md:text-[20px] lg:text-[20px] font-roboto text-start">
+                        Total Students Score above 95% :
+                        <span className="text-[#b51253] text-[18px] md:text-[20px] lg:text-[20px] font-semibold">{` ${record?.above95}`}</span>
+                      </h3>
+                    ):""}
                     <h3 className="text-[#0f0f0f] text-[18px] md:text-[20px] lg:text-[20px] font-roboto text-start">
                       Total Students Score above 90% :
                       <span className="text-[#b51253] text-[18px] md:text-[20px] lg:text-[20px] font-semibold">{` ${record?.above90}`}</span>

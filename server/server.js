@@ -1,564 +1,365 @@
 const express = require("express");
-const fs = require("fs");
-const bodyParser = require("body-parser");
-const cors = require("cors");
-const app = express();
-const PORT =  process.env.PORT || 5005;
-// const PORT = 5005;
-const DATA_FILE = "./jsonDatabase/images.json";
+const mongoose = require("mongoose");
 const path = require("path");
-const fileUpload = require("express-fileupload");
-const bcrypt = require("bcrypt");
+const fs = require("fs");
+const cors = require("cors");
+const bodyParser = require("body-parser");
+const bcrypt = require("bcryptjs");
 const nodemailer = require("nodemailer");
-require("dotenv").config(); 
-// CORS configuration
-const allowedOrigins = process.env.ALLOWED_ORIGINS?.split(",");
+const dotenv = require("dotenv");
+const fileUpload = require("express-fileupload");
 
-console.log("allowedOrigins",allowedOrigins)
-app.use(
-  cors({
-    origin: (origin, callback) => {
-      if (!origin || allowedOrigins.includes(origin)) {
-        callback(null, true); // Allow request
-      } else {
-        callback(null, false); // Reject request without throwing an error
-      }
-    },
-    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"], // Allowed HTTP methods
-    allowedHeaders: ["Content-Type", "Authorization"], // Allowed headers
-    credentials: true, // Allow cookies if needed
-  })
-);
+dotenv.config();
+const app = express();
+const PORT = process.env.PORT || 5000;
 
+// Middleware
+app.use(cors());
+app.use(bodyParser.json());
+app.use(fileUpload());
 
-// Handle pre-flight CORS requests
-app.options("*", cors({
-  origin: (origin, callback) => {
-    if (!origin || allowedOrigins.includes(origin)) {
-      callback(null, true);
-    } else {
-      callback(null, false);
-    }
-  },
-}));
+// MongoDB Connection
+mongoose.connect(process.env.MONGODB_URI, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+})
+.then(() => console.log("MongoDB connected"))
+.catch((err) => console.log("MongoDB connection error:", err));
 
-app.use(express.json());
+// Import Models
+const AdminProfile = require("./models1/AdminProfile");
+const Image = require("./models1/Images");
+const Teacher = require("./models1/Teachers");
+const Video = require("./models1/Videos");
 
-app.use(fileUpload({
-  limits: { fileSize: 5 * 1024 * 1024 } // 5 MB
-}));
+// Admin Login API
+app.post("/api/login", async (req, res) => {
+  const { email, password } = req.body;
 
-// app.use(cors({
-//   origin: 'http://localhost:3000',  // Allow requests from frontend on port 3000
-//   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],  // Allow methods
-//   allowedHeaders: ['Content-Type', 'Authorization'],  // Allow specific headers
-// }));
+  const user = await AdminProfile.findOne({ email });
+  if (!user) {
+    return res.status(401).json({ success: false, message: "Invalid credentials" });
+  }
 
-// // Allow pre-flight OPTIONS requests for CORS
-// app.options('*', cors()); // Handle pre-flight CORS request
+  const isPasswordValid = await bcrypt?.compare(password, user.password);
+  if (isPasswordValid) {
+    return res.json({ success: true });
+  }
 
-// app.use(bodyParser.json());
-// app.use(fileUpload());
-//Images Manuplation
-// Routes
-const uploadDir = path?.join(__dirname, "../public/uploads");
-if (!fs?.existsSync(uploadDir)) {
-  fs?.mkdirSync(uploadDir, { recursive: true });
-}
-
-// Get all images
-app.get("/images", (req, res) => {
-  fs.readFile(DATA_FILE, (err, data) => {
-    if (err)
-      return res.status(500).json({ message: "Unable to read data file" });
-    res.json(JSON.parse(data));
-  });
+  return res.status(401).json({ success: false, message: "Invalid credentials" });
 });
 
-// Upload an image
+// Image Routes
+// Upload Image
 app.post("/images", (req, res) => {
-  const { title } = req?.body;
-  const file = req?.files?.image;
+  const { title } = req.body;
+  console.log("fbfdsfdf", req.files?.image)
+  const file = req.files?.image;
 
-  // Validate input
   if (!file || !title) {
-    return res
-      .status(400)
-      .json({ message: "Image file and title are required." });
+    return res.status(400).json({ message: "Image file and title are required." });
   }
 
   // Validate file type
   const allowedTypes = ["image/jpeg", "image/png", "image/jpg"];
-  if (!allowedTypes?.includes(file?.mimetype)) {
+  if (!allowedTypes.includes(file.mimetype)) {
     return res.status(400).json({
       message: "Invalid file type. Only .jpg, .jpeg, and .png are allowed.",
     });
   }
 
-  // Define file path
-  const filePath = path.join(uploadDir, `${Date.now()}-${file.name}`);
-
-  // Move file to upload directory
-  file?.mv(filePath, (err) => {
-    if (err) {
-      return res.status(500).json({ message: "Unable to save file." });
-    }
-
-    // Create new image entry
-    const newImage = {
-      src: `/uploads/${path.basename(filePath)}`,
-      title,
-    };
-
-    // Read and update the JSON database
-    fs.readFile(DATA_FILE, (err, data) => {
-      if (err)
-        return res.status(500).json({ message: "Unable to read data file." });
-
-      const images = JSON.parse(data);
-      images.push(newImage);
-
-      fs.writeFile(DATA_FILE, JSON.stringify(images, null, 2), (err) => {
-        if (err)
-          return res.status(500).json({ message: "Unable to save data." });
-        res.status(201).json(newImage);
-      });
-    });
+  // Create a new Image document
+  const newImage = new Image({
+    title,
+    image: {
+      data: file.data,
+      contentType: file.mimetype,
+    },
   });
+
+  // Save the image to MongoDB
+  newImage
+    .save()
+    .then((savedImage) => {
+      res.status(201).json(savedImage);
+    })
+    .catch((err) => {
+      res.status(500).json({ message: "Error saving image to database", error: err });
+    });
 });
 
-// app.delete('/images/:index', (req, res) => {
-//   const index = parseInt(req.params.index, 10);
+// Get all Images
+app.get("/images", (req, res) => {
+  Image.find()
+    .then((images) => {
+      const imageUrls = images?.map((image) => ({
+        id: image._id,
+        title: image.title,
+        url: `${process.env.BACKEND_URL}/images/${image._id}`, // Returning the URL
+      }));
+      res.json(imageUrls);
+    })
+    .catch((err) => {
+      res.status(500).json({ message: "Unable to fetch images", error: err });
+    });
+});
 
-//   fs.readFile(DATA_FILE, (err, data) => {
-//     if (err) return res.status(500).json({ message: 'Unable to read data file' });
+app.get("/images/:id", (req, res) => {
+  const { id } = req.params;
 
-//     const images = JSON.parse(data);
-//     if (index < 0 || index >= images?.length) {
-//       return res.status(404).json({ message: 'Image not found' });
-//     }
-
-//     const deletedImage = images?.splice(index, 1);
-
-//     fs.writeFile(DATA_FILE, JSON.stringify(images, null, 2), (err) => {
-//       if (err) return res.status(500).json({ message: 'Unable to save data' });
-//       res.json(deletedImage);
-//     });
-//   });
-// });
-
-app.delete("/images/:index", (req, res) => {
-  const index = parseInt(req.params.index, 10);
-
-  fs.readFile(DATA_FILE, (err, data) => {
-    if (err)
-      return res.status(500).json({ message: "Unable to read data file" });
-
-    const images = JSON.parse(data);
-    if (index < 0 || index >= images?.length) {
-      return res.status(404).json({ message: "Image not found" });
-    }
-
-    const deletedImage = images?.splice(index, 1)[0]; // Extract the deleted image object
-
-    // Delete the image from the filesystem
-    fs.unlink(`../public/${deletedImage?.src}`, (err) => {
-      if (err) {
-        return res.status(500).json({ message: "Unable to delete image file" });
+  Image.findById(id)
+    .then((image) => {
+      if (!image) {
+        return res.status(404).json({ message: "Image not found" });
       }
 
-      // After deleting the image, update the JSON file
-      fs.writeFile(DATA_FILE, JSON.stringify(images, null, 2), (err) => {
-        if (err)
-          return res.status(500).json({ message: "Unable to save data" });
-        res.json(deletedImage); // Return the deleted image data
-      });
+      res.contentType(image.image.contentType); // Set the correct content type
+      res.send(image.image.data); // Send image data as the response
+    })
+    .catch((err) => {
+      res.status(500).json({ message: "Unable to fetch image", error: err });
     });
-  });
+});  
+
+// Get Image by ID
+app.delete("/images/:id", (req, res) => {
+  const { id } = req.params;
+
+  Image.findByIdAndDelete(id)
+    .then((deletedImage) => {
+      if (!deletedImage) {
+        return res.status(404).json({ message: "Image not found" });
+      }
+
+      res.status(200).json({ message: "Image deleted successfully", deletedImage });
+    })
+    .catch((err) => {
+      res.status(500).json({ message: "Unable to delete image", error: err });
+    });
 });
 
-app.put("/images/:index", (req, res) => {
-  const index = parseInt(req.params.index, 10);
-  const { title } = req.body;
 
-  if (!title) {
-    return res.status(400).json({ message: "Invalid data" });
+// Teacher Routes
+// Add Teacher
+app.post("/teachers", (req, res) => {
+  const { title, name, education, contact } = req.body;
+  const file = req.files?.photo;
+
+  if (!file || !title || !name || !education || !contact) {
+    return res.status(400).json({ message: "All fields are required." });
   }
 
-  fs.readFile(DATA_FILE, (err, data) => {
-    if (err)
-      return res.status(500).json({ message: "Unable to read data file" });
+  // Validate image file type
+  const allowedTypes = ["image/jpeg", "image/png", "image/jpg"];
+  if (!allowedTypes.includes(file.mimetype)) {
+    return res.status(400).json({
+      message: "Invalid file type. Only .jpg, .jpeg, .png are allowed.",
+    });
+  }
 
-    const images = JSON.parse(data);
-    if (index < 0 || index >= images.length) {
-      return res.status(404).json({ message: "Image not found" });
+  const newTeacher = new Teacher({
+    title,
+    name,
+    education,
+    contact,
+    photo: {
+      data: file.data,
+      contentType: file.mimetype,
+    },
+  });
+
+  newTeacher
+    .save()
+    .then((savedTeacher) => res.status(201).json(savedTeacher))
+    .catch((err) => res.status(500).json({ message: "Error saving teacher to database", error: err }));
+});
+
+// Get all Teachers
+// app.get("/teachers", (req, res) => {
+//   Teacher.find()
+//     .then((teachers) => {
+//       res.json(teachers);
+//     })
+//     .catch((err) => {
+//       res.status(500).json({ message: "Unable to fetch teachers", error: err });
+//     });
+// });
+app.get("/teachers", (req, res) => {
+  Teacher.find()
+    .then((teachers) => {
+      if (!teachers || teachers.length === 0) {
+        return res.status(404).json({ message: "No teachers found" });
+      }
+
+      const teacherData = teachers?.map((teacher) => ({
+        _id: teacher._id,
+        title: teacher.title,
+        name: teacher.name,
+        education: teacher.education,
+        contact: teacher.contact,
+        photoUrl: teacher.photo
+          // ? `http://localhost:5005/teachers/${teacher._id}/photo`
+          ? `${process.env.BACKEND_URL}/${teacher._id}/photo`
+          : null, // Provide photo URL or null if no photo exists
+      }));
+
+      res.status(200).json(teacherData);
+    })
+    .catch((err) =>
+      res.status(500).json({ message: "Error fetching teachers", error: err })
+    );
+});
+
+app.get("/teachers/:id/photo", (req, res) => {
+  const { id } = req.params;
+
+  Teacher.findById(id)
+    .then((teacher) => {
+      if (!teacher || !teacher.photo) {
+        return res.status(404).json({ message: "Photo not found" });
+      }
+
+      res.contentType(teacher.photo.contentType); // Set the content type
+      res.send(teacher.photo.data); // Send the binary data
+    })
+    .catch((err) =>
+      res.status(500).json({ message: "Error fetching photo", error: err })
+    );
+});
+
+
+
+// Update Teacher
+app.put("/teachers/:id", (req, res) => {
+  const { id } = req.params;
+  const { title, name, education, contact } = req.body;
+  let photo = req.body?.photo;
+
+  if (req.files?.photo) {
+    const photoFile = req.files?.photo;
+    if (!["image/jpeg", "image/png", "image/jpg"].includes(photoFile.mimetype)) {
+      return res.status(400).json({ message: "Invalid file type" });
     }
 
-    images[index].title = title;
-
-    fs.writeFile(DATA_FILE, JSON.stringify(images, null, 2), (err) => {
-      if (err) return res.status(500).json({ message: "Unable to save data" });
-      res.json(images[index]);
-    });
-  });
-});
-
-//Video manuplation
-const DATA_FILE_VIDEO = "./jsonDatabase/videos.json";
-
-// Helper function to read/write video data
-const getVideos = () => {
-  if (fs.existsSync(DATA_FILE_VIDEO)) {
-    return JSON.parse(fs.readFileSync(DATA_FILE_VIDEO, "utf8"));
+    photo = {
+      data: photoFile.data,
+      contentType: photoFile.mimetype,
+    };
   }
-  return [];
-};
 
-const saveVideos = (videos) => {
-  fs.writeFileSync(DATA_FILE_VIDEO, JSON.stringify(videos, null, 2));
-};
+  Teacher.findById(id)
+    .then((teacher) => {
+      if (!teacher) {
+        return res.status(404).json({ message: "Teacher not found" });
+      }
 
-// Routes
-app.get("/videos", (req, res) => {
-  const videos = getVideos();
-  res.json(videos);
+      teacher.title = title || teacher.title;
+      teacher.name = name || teacher.name;
+      teacher.education = education || teacher.education;
+      teacher.contact = contact || teacher.contact;
+      teacher.photo = photo || teacher.photo;
+
+      return teacher.save();
+    })
+    .then((updatedTeacher) => res.json(updatedTeacher))
+    .catch((err) => res.status(500).json({ message: "Error updating teacher", error: err }));
 });
 
+// Delete Teacher
+app.delete("/teachers/:id", (req, res) => {
+  const { id } = req.params;
+
+  Teacher.findByIdAndDelete(id)
+    .then((teacher) => {
+      if (!teacher) {
+        return res.status(404).json({ message: "Teacher not found" });
+      }
+
+      res.json({ message: "Teacher deleted successfully", teacher });
+    })
+    .catch((err) => {
+      res.status(500).json({ message: "Error deleting teacher", error: err });
+    });
+});
+
+
+// Video Routes
+// Add Video
 app.post("/videos", (req, res) => {
   const { title, description, url } = req.body;
   if (!title || !description || !url) {
     return res.status(400).json({ message: "All fields are required." });
   }
 
-  const videos = getVideos();
-  const newVideo = { id: Date.now(), title, description, url };
-  videos.push(newVideo);
-  saveVideos(videos);
+  const newVideo = new Video({ title, description, url });
 
-  res.status(201).json(newVideo);
+  newVideo
+    .save()
+    .then((savedVideo) => res.status(201).json(savedVideo))
+    .catch((err) => res.status(500).json({ message: "Error saving video", error: err }));
+});
+
+// Get All Videos
+app.get("/videos", (req, res) => {
+  Video.find()
+    .then((videos) => res.json(videos))
+    .catch((err) => res.status(500).json({ message: "Unable to fetch videos", error: err }));
 });
 
 app.delete("/videos/:id", (req, res) => {
   const { id } = req.params;
-  let videos = getVideos();
-  const videoExists = videos.some((video) => video.id === parseInt(id));
 
-  if (!videoExists) {
-    return res.status(404).json({ message: "Video not found." });
-  }
-
-  videos = videos.filter((video) => video.id !== parseInt(id));
-  saveVideos(videos);
-
-  res.status(200).json({ message: "Video deleted successfully." });
-});
-
-//Teacher
-const DATA_FILE_TEACHER = "./jsonDatabase/teachers.json";
-
-const loadTeachers = () => {
-  if (fs.existsSync(DATA_FILE_TEACHER)) {
-    const data = fs.readFileSync(DATA_FILE_TEACHER);
-    return JSON.parse(data);
-  }
-  return [];
-};
-
-// Save teachers data to JSON file
-const saveTeachers = (data) => {
-  fs.writeFileSync(DATA_FILE_TEACHER, JSON.stringify(data, null, 2));
-};
-
-// Validate image type
-const isValidImage = (file) => {
-  return ["image/jpeg", "image/png", "image/jpg"]?.includes(file?.mimetype);
-};
-
-// Routes
-app.get("/teachers", (req, res) => {
-  const teachers = loadTeachers();
-  res?.json(teachers);
-});
-
-app.post("/teachers", (req, res) => {
-  // console.log("fbbdssdcs341", req)
-  const { title, name, education, contact } = req.body;
-
-  if (!req.files || !req?.files?.photo) {
-    return res.status(400).json({ message: "No file uploaded" });
-  }
-
-  const photoFile = req?.files?.photo;
-
-  // Check if the uploaded file is a valid image format
-  if (!isValidImage(photoFile)) {
-    return res.status(400).json({
-      message: "Invalid file type. Only .jpg, .jpeg, .png are allowed.",
-    });
-  }
-
-  // Move file to uploads directory ../public/uploads
-  const photoPath = `../public/uploads/${Date.now()}-${photoFile.name}`;
-  photoFile.mv(path.join(__dirname, photoPath), (err) => {
-    if (err) {
-      return res.status(500).json({ message: "Error uploading the file" });
-    }
-
-    const teachers = loadTeachers();
-    const newTeacher = {
-      id: Date.now().toString(), // Unique ID
-      title,
-      name,
-      education,
-      contact,
-      photo: photoPath, // Set photo path
-    };
-
-    teachers.push(newTeacher);
-    saveTeachers(teachers);
-
-    res.json(newTeacher);
-  });
-});
-
-// app.put("/teachers/:id", (req, res) => {
-//   console.log("sdsbssbsdf453",req?.body)
-//   const { id } = req?.params;
-//   const { title, name, education, contact } = req?.body;
-
-//   let photo = req?.body?.photo; // If no new photo is uploaded, retain the existing photo
-
-//   if (req?.files && req?.files?.photo) {
-//     const photoFile = req?.files?.photo;
-
-//     // Validate the image format
-//     if (!isValidImage(photoFile)) {
-//       return res.status(400).json({
-//         message: "Invalid file type. Only .jpg, .jpeg, .png are allowed.",
-//       });
-//     }
-
-//     // Move file to uploads directory
-//     photo = `../public/uploads/${Date.now()}-${photoFile?.name}`;
-//     photoFile.mv(path.join(__dirname, photo), (err) => {
-//       if (err) {
-//         return res.status(500).json({ message: "Error uploading the file" });
-//       }
-//     });
-//   }
-
-//   const teachers = loadTeachers();
-//   const teacherIndex = teachers.findIndex((teacher) => teacher.id === id);
-
-//   if (teacherIndex === -1) {
-//     return res.status(404).json({ message: "Teacher not found" });
-//   }
-
-//   if (req?.files && req?.files?.photo) {
-//     teachers[teacherIndex] = {
-//       ...teachers[teacherIndex],
-//       title,
-//       name,
-//       education,
-//       contact,
-//       photo,
-//     };
-//   } else {
-//     teachers[teacherIndex] = {
-//       ...teachers[teacherIndex],
-//       title,
-//       name,
-//       education,
-//       contact,
-//     };
-//   }
-
-//   saveTeachers(teachers);
-
-//   res.json(teachers[teacherIndex]);
-// });
-
-app.put("/teachers/:id", (req, res) => {
-  console.log("fgbdbfgd43", req);
-  const { id } = req?.params;
-  const { title, name, education, contact } = req?.body;
-
-  let photo = req?.body?.photo; // Retain the existing photo if no new one is uploaded
-
-  if (req?.files && req?.files?.photo) {
-    const photoFile = req?.files?.photo;
-
-    // Validate the image format
-    if (!isValidImage(photoFile)) {
-      return res.status(400).json({
-        message: "Invalid file type. Only .jpg, .jpeg, .png are allowed.",
-      });
-    }
-
-    // Generate new photo path
-    photo = `../public/uploads/${Date.now()}-${photoFile.name}`;
-    const uploadPath = path.join(__dirname, "../public/", photo);
-
-    // Move file to uploads directory
-    photoFile.mv(uploadPath, (err) => {
-      if (err) {
-        return res.status(500).json({ message: "Error uploading the file" });
+  Video.findByIdAndDelete(id)
+    .then((deletedVideo) => {
+      if (!deletedVideo) {
+        return res.status(404).json({ message: "Video not found" });
       }
+
+      res.status(200).json({ message: "Video deleted successfully", deletedVideo });
+    })
+    .catch((err) => {
+      res.status(500).json({ message: "Error deleting video", error: err });
     });
-  }
-
-  // Load the current list of teachers
-  const teachers = loadTeachers();
-  const teacherIndex = teachers.findIndex((teacher) => teacher.id === id);
-
-  if (teacherIndex === -1) {
-    return res.status(404).json({ message: "Teacher not found" });
-  }
-
-  const existingPhoto = teachers[teacherIndex]?.photo;
-
-  // Update the teacher record
-  teachers[teacherIndex] = {
-    ...teachers[teacherIndex],
-    title,
-    name,
-    education,
-    contact,
-    photo: photo || existingPhoto, // Use new photo if uploaded, otherwise keep the existing one
-  };
-
-  // Save updated teacher data
-  saveTeachers(teachers);
-
-  // If a new photo was uploaded, delete the old photo
-  if (req?.files && req?.files?.photo && existingPhoto) {
-    const oldPhotoPath = path.join(__dirname, "../public/", existingPhoto);
-
-    fs.unlink(oldPhotoPath, (err) => {
-      if (err) {
-        console.error(`Failed to delete old photo: ${err.message}`);
-        // Log the error but don't fail the request
-      }
-    });
-  }
-
-  res.json(teachers[teacherIndex]);
-});
-
-app.delete("/teachers/:id", (req, res) => {
-  const { id } = req.params;
-
-  const teachers = loadTeachers();
-  // Find the teacher to delete
-  const teacherToDelete = teachers.find((teacher) => teacher.id === id);
-
-  if (Array.isArray(teacherToDelete) && teacherToDelete?.length === 0) {
-    return res.status(404).json({ message: "Teacher not found" });
-  }
-
-  // Filter out the deleted teacher
-  const updatedTeachers = teachers.filter((teacher) => teacher.id !== id);
-
-  // Delete the teacher's image file
-
-  console.log("sggfsbg34", teacherToDelete);
-
-  fs.unlink(teacherToDelete?.photo, (err) => {
-    if (err) {
-      console.error("Error deleting image:", err.message);
-      return res.status(500).json({ message: "Error deleting image file" });
-    }
-
-    // Save the updated teachers list to the JSON file
-    fs.writeFile(
-      DATA_FILE_TEACHER,
-      JSON.stringify(updatedTeachers, null, 2),
-      "utf-8",
-      (err) => {
-        if (err) {
-          return res
-            .status(500)
-            .json({ message: "Error saving updated data", error: err.message });
-        }
-
-        res.json({ message: "Teacher deleted successfully" });
-      }
-    );
-  });
-});
-
-//Admin Login
-const usersDB = JSON.parse(
-  fs.readFileSync("./jsonDatabase/adminProfile.json", "utf8")
-);
-
-app.use(cors());
-app.use(bodyParser.json());
-
-// Login API
-app.post("/api/login", async (req, res) => {
-  const { email, password } = req.body;
-
-  const user = usersDB.find((user) => user.email === email);
-  if (!user) {
-    return res
-      .status(401)
-      .json({ success: false, message: "Invalid credentials" });
-  }
-
-  const isPasswordValid = await bcrypt.compare(password, user.password);
-  if (isPasswordValid) {
-    return res.json({ success: true });
-  }
-
-  return res
-    .status(401)
-    .json({ success: false, message: "Invalid credentials" });
 });
 
 
+// Contact Form
 app.post("/contact", async (req, res) => {
-  console.log("fvvddvdsvd",req)
-  const { firstname, lastname, email, countrycode, phonenumber, message } =
-    req.body;
+  const { firstname, lastname, email, countrycode, phoneNo, message } = req.body;
 
   try {
-    // Configure your email transpor
-    console.log("sfgsg34", process.env)
     const transporter = nodemailer.createTransport({
       service: "Gmail",
       auth: {
-        user: process.env.EMAIL_USER, // Your email
-        pass: process.env.EMAIL_PASS, // Your email password or app password
+        user: process.env.EMAIL_USER,
+        pass: process.env.EMAIL_PASS,
       },
     });
 
-    // Compose the email
     const mailOptions = {
-      from: email, // Sender email
-      to: process.env.EMAIL_USER, // Recipient email
+      from: email,
+      to: process.env.EMAIL_USER,
       subject: "Students Enquiry through Contact Form.",
       text: `
         First Name: ${firstname}
         Last Name: ${lastname}
         Email: ${email}
         Country Code: ${countrycode}
-        Phone Number: ${phonenumber}
+        Phone Number: ${phoneNo}
         Message: ${message}
       `,
     };
 
-    // Send the email
+    console.log("mainObject1",mailOptions)
     await transporter.sendMail(mailOptions);
-    res
-      .status(200)
-      .json({ success: true, message: "Email sent successfully!" });
+    res.status(200).json({ success: true, message: "Email sent successfully!" });
   } catch (error) {
     console.error("Error sending email:", error);
     res.status(500).json({ success: false, message: "Failed to send email." });
   }
 });
 
+// Start Server
 app.listen(PORT, () => {
-  console.log(`Server running on http://localhost:${PORT}`);
+  console.log(`Server is running on port ${PORT}`);
 });
