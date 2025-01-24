@@ -353,7 +353,7 @@ function AcademicTeam() {
               teacher to make space for new ones. Thank you!
             </div>
           </div>
-        ) : (
+        ) : (teachers?.length===0&&
           <div className=" my-[100px] w-[100vw]  text-[#696969] text-[16px] md:text-[20px] lg:text-[24px] font-rubik-vinyl font-bold text-center pt-6 md:pt-10 pb-6">
             OOPS! No any Teacher Details Uploaded Yet!
           </div>
