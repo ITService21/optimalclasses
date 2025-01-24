@@ -199,7 +199,7 @@ app.get("/teachers", (req, res) => {
         contact: teacher.contact,
         photoUrl: teacher.photo
           // ? `http://localhost:5005/teachers/${teacher._id}/photo`
-          ? `${process.env.BACKEND_URL}/${teacher._id}/photo`
+          ? `${process.env.BACKEND_URL}/teachers/${teacher._id}/photo`
           : null, // Provide photo URL or null if no photo exists
       }));
 
