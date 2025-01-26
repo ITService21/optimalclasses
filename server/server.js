@@ -8,7 +8,7 @@ const nodemailer = require("nodemailer");
 const dotenv = require("dotenv");
 const fileUpload = require("express-fileupload");
 const bcrypt = require('bcryptjs');
-const mongoose = require('mongoose');
+// const mongoose = require('mongoose');
 dotenv.config();
 const app = express();
 const PORT = process.env.PORT || 5000;
