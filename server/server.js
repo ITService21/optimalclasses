@@ -3,11 +3,11 @@ const path = require("path");
 const fs = require("fs");
 const cors = require("cors");
 const bodyParser = require("body-parser");
-const bcrypt = require("bcryptjs");
 const nodemailer = require("nodemailer");
 const dotenv = require("dotenv");
 const fileUpload = require("express-fileupload");
-
+const bcrypt = require('bcryptjs');
+const mongoose = require('mongoose');
 dotenv.config();
 const app = express();
 const PORT = process.env.PORT || 5000;
@@ -198,7 +198,7 @@ app.get("/teachers", (req, res) => {
         contact: teacher.contact,
         photoUrl: teacher.photo
           // ? `http://localhost:5005/teachers/${teacher._id}/photo`
-          ? `${process.env.BACKEND_URL}/${teacher._id}/photo`
+          ? `${process.env.BACKEND_URL}/teachers/${teacher._id}/photo`
           : null, // Provide photo URL or null if no photo exists
       }));
 

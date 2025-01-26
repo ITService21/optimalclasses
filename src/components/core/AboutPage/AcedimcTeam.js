@@ -4,7 +4,7 @@ import { toast } from "react-hot-toast";
 import imageCompression from "browser-image-compression";
 import Button from "../../common/Button";
 import Input from "../../common/Input";
-
+import Loader from "../../common/Loader"
 function AcademicTeam() {
   const apiUrl = process.env.NODE_ENV === 'production'
   ? process.env.REACT_APP_API_URL_PROD  
@@ -16,6 +16,7 @@ function AcademicTeam() {
   const [teachers, setTeachers] = useState([]);
   const [loading, setLoading] = useState(false);
   const [btnDisable, setBtnDisable] = useState(false);
+  const [loader, setLoader] = useState(true);
   const [formData, setFormData] = useState({
     title: "",
     name: "",
@@ -45,14 +46,18 @@ function AcademicTeam() {
   };
 
   const fetchTeachers = async () => {
+    setLoader(true);
     try {
       // const { data } = await axios.get(`${apiUrl}/teachers`);
       const data = await axios.get(`${apiUrl}/teachers`);
       setTeachers(data?.data);
+      setLoader(false)
     } catch (error) {
+      setLoader(false)
       toast.error("Fetching Teacher's Data Failed!");
       console.error("Failed to fetch teachers data: ", error);
     }
+
   };
 
   const addTeacher = async (form) => {
@@ -211,6 +216,7 @@ function AcademicTeam() {
 
   return (
     <div className="w-[100vw] bg-[#ffffff] bg-gradient-to-b from-[#ffe6e9] to-[#cbfe90]">
+      {/* <Loader loading={loader}/> */}
       <div className="text-[#db2929] text-[36px] md:text-[42px] lg:text-[50px] font-rubik-vinyl font-bold text-center pt-6 md:pt-10 pb-6">
         Our Academic Team
       </div>
@@ -353,7 +359,7 @@ function AcademicTeam() {
               teacher to make space for new ones. Thank you!
             </div>
           </div>
-        ) : (
+        ) : (teachers?.length===0&&
           <div className=" my-[100px] w-[100vw]  text-[#696969] text-[16px] md:text-[20px] lg:text-[24px] font-rubik-vinyl font-bold text-center pt-6 md:pt-10 pb-6">
             OOPS! No any Teacher Details Uploaded Yet!
           </div>
