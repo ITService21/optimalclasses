@@ -45,7 +45,7 @@ function MissionVision() {
                 <h2 className="text-[#c62929] text-[26px] md:text-[36px] lg:text-[40px] font-rubik-vinyl font-bold text-center pt-10">
                   Our Vision
                 </h2>
-                <p>
+                <p className="px-[6px]">
                   To empower students through high-quality digital education,
                   fostering easy understanding with the guidance of highly
                   qualified and experienced tutors. We aim to develop critical
@@ -58,7 +58,7 @@ function MissionVision() {
                 <h2 className="text-[#c62929] text-[26px] md:text-[36px] lg:text-[40px] font-rubik-vinyl font-bold text-center pt-10">
                   Our Misson
                 </h2>
-                <p>
+                <p className="px-[6px]">
                   To be a leading provider of innovative digital education that
                   transforms learning into an engaging, accessible, and
                   effective journey, enabling students to achieve academic

@@ -29,7 +29,7 @@ const AboutSection = () => {
         {/* Right part - Text content */}
         <div className="w-full lg:w-1/2 flex flex-col gap-10 py-8">
           <h1 className="text-4xl text-white font-semibold text-center">
-            What you think about us? <HighlightText text={"Optimal classes"} />
+            What do you think about us? <HighlightText text={"Optimal classes"} />
           </h1>
 
           <p className="text-[16px] text-justify text-richblack-200 -mt-6">
