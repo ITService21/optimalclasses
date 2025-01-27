@@ -18,8 +18,8 @@ const StatsSection = () => {
         </span>
       </h2>
 
-      {/* <div className="flex flex-col md:flex-row md:flex-flow justify-center items-center"> */}
-      <div className="grid grid-cols-1 md:grid-cols-3 justify-center items-center bg-[#ffcdcd] py-[100px] px-2 md:px-8">
+      {/* <div className="flex flex-col md:flex-row md:flex-flow justify-center items-center"> ffcdcd*/}
+      <div className="grid grid-cols-1 md:grid-cols-3 justify-center items-center bg-gradient-to-r from-[#ffcdcd] to-[#ffcdcd] py-[100px] px-2 md:px-8">
         <div className="py-12 group relative bg-[#f4f4f4] m-3 p-6 rounded-lg shadow-lg shadow-[#8b8b8b] text-center  transition-all     duration-200 overflow-hidden hover:scale-105">
           <span className="relative z-10 text-[#838383] mb-4 block transition-opacity duration-200 text-justify p-6 py-2">
             <svg

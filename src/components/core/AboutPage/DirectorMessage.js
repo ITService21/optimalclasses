@@ -34,47 +34,59 @@ function DirectorMessage() {
       </div>
       <div className=" pb-10 bg-gradient-to-b from-[#BFF098] to-[#6FD6FF]">
         <h1 className="text-[#ff3434] text-[36px] md:text-[42px] lg:text-[50px] font-rubik-vinyl font-bold text-center pt-10">
-          Director's message
+          Our Director
         </h1>
         <div className=" grid grid-cols-1 md:grid-cols-2 md:gap-6 px-4 md:px-10 ">
           <div className="flex flex-col">
             <div
               className={`text-black text-[18px] font-cinzel  md:my-[40px] text-justify flex md:gap-5 flex-col transition-all duration-300`}
             >
-              Dear Students,
-              <br />
-              Welcome to Optimal Classes, a place where learning meets
-              excellence! Since our establishment in 2022, it has been our
-              mission to empower young minds and help shape a brighter future
-              for every student who walks through our doors. 
-              <br />
-              <br />
-              At Optimal Classes,
-              we firmly believe that education is more than just scoring
-              marks—it’s about understanding concepts, applying knowledge, and
-              mastering skills that will serve you throughout life. Our focus is
-              on building a strong foundation, fostering critical thinking, and
-              preparing you to face challenges with confidence and resilience.
-              <br />
-              <br />
-              Success is not a coincidence; it is the result of consistent effort, hard work, and a hunger to learn. With our dedicated faculty, cutting-edge digital classrooms, and personalized study plans, we ensure that each of you receives the support and guidance needed to reach your goals. Whether you're aiming for academic excellence in school or preparing for competitive exams like IIT-JEE and NEET, we are here to guide you every step of the way.
-              <br />
-              <br />
-              Remember, every challenge you face is a stepping stone to growth. Stay disciplined, remain focused, and always believe in your abilities. Success may demand patience, but with determination and perseverance, you can achieve anything you set your heart on.
-              <br />
-              <br />
-              At Optimal Classes, we are more than just educators; we are
-              mentors, motivators, and partners in your journey to success.
-              Together, let’s aim for greatness and make your dreams a reality.
-              <br />
-              <br />
-              Warm regards,
-              <br />
-              Shobhit Kumar Srivastava
-              <br />
-              Director
-              <br />
-              B.Tech (Mechanical Engineering)
+              <div>
+                <br />
+                <p>
+                  <span class="font-semibold">Shobhit Kumar Srivastava</span>, the esteemed director of
+                  <span class="font-semibold"> Optimal Classes</span>, is a visionary leader dedicated to transforming the field of education.
+                  He earned his <span class="font-semibold">B. Tech. degree in 2007</span> from <span class="font-semibold">H. B. T. I. Kanpur</span>,
+                  one of <span class="font-semibold">India's most prestigious engineering colleges</span>, showcasing his academic brilliance early on.
+                </p>
+                <p class="mt-4">
+                  Before embarking on his journey as an educator, Mr. Srivastava built a remarkable career as a
+                  <span class="font-semibold"> senior engineer</span> in two of <span class=""> India’s top companies</span>,
+                  <span class="font-semibold"> Larsen & Toubro (L&T)</span> and <span class="font-semibold"> Hindustan Construction Company (HCC)</span>.
+                  During his tenure from <span class="font-semibold">2007 to 2017</span>, he contributed significantly to
+                  <span class="font-semibold"> high-impact engineering projects</span>, demonstrating <span class="font-semibold">excellence</span>,
+                  <span class="font-semibold"> innovation</span>, and <span class="font-semibold">leadership</span>.
+                </p>
+                <p class="mt-4">
+                  Driven by a profound desire to <span class="font-semibold"> serve the nation</span>, he transitioned to the
+                  <span class="font-semibold"> field of education in 2017</span>. Since then, Mr. Srivastava has been passionately committed to
+                  <span class="font-semibold"> nurturing young minds</span>, leveraging his <span class="font-semibold"> technical expertise </span>
+                  and <span class="font-semibold">professional experience</span> to inspire students. His mission is to deliver
+                  <span class="font-semibold"> exceptional education</span>, instill <span class="font-semibold"> critical thinking</span>,
+                  and guide students to excel <span class="font-semibold"> academically</span> and <span class="font-semibold"> socially</span>,
+                  contributing meaningfully to society.
+                </p>
+                <p class="mt-4">
+                  Under his leadership, <span class="font-semibold"> Optimal Classes</span> continues to achieve
+                  <span class="font-semibold"> remarkable results</span>, setting new benchmarks in <span class="font-semibold">academic excellence</span>.
+                </p>
+              </div>
+
+              <div class="mt-2 p-6 bg-gradient-to-r from-[#eeefee] via-[#eeefee] to-[#eeefee] rounded-xl shadow-xl text-center">
+  <p class="text-xl text-gray-700 font-medium">Warm regards,</p>
+  <p class="text-2xl font-extrabold text-blue-700 mt-3 tracking-wide drop-shadow-md">
+    Shobhit Kumar Srivastava
+  </p>
+  <p class="text-lg font-semibold text-green-600 mt-2 ">
+    Director
+  </p>
+  <p class="text-md font-medium text-gray-600 mt-3 italic bg-yellow-50 px-4 py-1 rounded-full shadow-sm inline-block border-b-4 border-green-300">
+    B.Tech from H.B.T.I Kanpur (Mechanical Engineering)
+  </p>
+</div>
+
+
+
               {/* <span className="text-[#ff3737]">Read More</span> */}
             </div>
           </div>

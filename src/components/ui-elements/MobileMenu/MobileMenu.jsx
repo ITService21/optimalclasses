@@ -82,7 +82,7 @@ export const MobileMenu = ({ menuLinks }) => {
             </>
           ))}
           <div>
-            <div className="mx-auto py-4 w-[200px]">
+            {/* <div className="mx-auto py-4 w-[200px]">
               {localStorage?.getItem("isAdmin") ? (
                 <button
                   className="md:text-[12px] lg:text-[16px] ml-2 bg-[#ff601c] hover:opacity-[0.8] text-white font- py-2 px-4 rounded focus:outline-none focus:shadow-outline"
@@ -104,7 +104,7 @@ export const MobileMenu = ({ menuLinks }) => {
                   Admin Panel
                 </button>
               )}
-            </div>
+            </div> */}
           </div>
         </ul>
       </div>

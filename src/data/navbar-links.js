@@ -14,8 +14,8 @@ export const NavbarLinks = [
         link: "/why-oc",
       },
       {
-        name: "Director's Message",
-        link: "/director-message",
+        name: "Our Director",
+        link: "/our-director",
       },
       {
         name: "Mission & Vision",
@@ -42,8 +42,8 @@ export const NavbarLinks = [
         link: "/class-7t10",
       },
       {
-        name: "Class 10 to 12",
-        link: "/class-10t12",
+        name: "Class 11 to 12",
+        link: "/class-11t12",
       },
       {
         name: "IIT-JEE / NEET",

@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useCallback } from "react";
 import AddImageForm from "./AddImageForm";
-
+import {gallery} from "../../../data/galleryimages"
 // ImageItem Component to be memoized
 const ImageItem = React.memo(({ imgObj, index, isAdmin, onDeleteImage }) => {
   const handleDelete = useCallback(() => {
@@ -79,7 +79,7 @@ function ImageList({ images, onDeleteImage, addImage, fetchImages }) {
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-        {imageArray?.slice(startIndex, endIndex).map((imgObj, index) => {
+        {gallery?.slice(startIndex, endIndex).map((imgObj, index) => {
           console.log("length1", imageArray?.length, "index", index);
           return (
             <>

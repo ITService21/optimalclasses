@@ -59,7 +59,7 @@ const PerfectPlatform = () => {
           {/* Button */}
           <Link
             type="button"
-            className="relative z-10 text-center text-[16px] text-roboto sm:text-[16px] w-[300px] md:w-[80%] py-2 font-bold rounded-full bg-[#b51616] hover:bg-[#c84343] transition-all duration-100 text-white mt-4 mb-4"
+            className="relative z-10 text-center text-[16px] text-roboto sm:text-[16px] w-[260px] md:w-[80%] py-2 font-bold rounded-full bg-[#b51616] hover:bg-[#c84343] transition-all duration-100 text-white mt-4 mb-4"
             to="/class-7t10"
             onClick={scrollToTop}
           >
@@ -94,8 +94,8 @@ const PerfectPlatform = () => {
           {/* Button */}
           <Link
             type="button"
-            className="relative z-10 text-center text-[16px] text-roboto sm:text-[16px] w-[300px] md:w-[80%] py-2 font-bold rounded-full bg-[#b51616] hover:bg-[#c84343] transition-all duration-100 text-white mt-4 mb-4"
-            to="/class-10t12"
+            className="relative z-10 text-center text-[16px] text-roboto sm:text-[16px] w-[260px] md:w-[80%] py-2 font-bold rounded-full bg-[#b51616] hover:bg-[#c84343] transition-all duration-100 text-white mt-4 mb-4"
+            to="/class-11t12"
             onClick={scrollToTop}
           >
             Learn more
@@ -128,7 +128,7 @@ const PerfectPlatform = () => {
           {/* Button */}
           <Link
             type="button"
-            className="relative z-10 text-center text-[16px] text-roboto sm:text-[16px] w-[300px] md:w-[80%] py-2 font-bold rounded-full bg-[#b51616] hover:bg-[#c84343] transition-all duration-100 text-white mt-4 mb-4"
+            className="relative z-10 text-center text-[16px] text-roboto sm:text-[16px] w-[260px] md:w-[80%] py-2 font-bold rounded-full bg-[#b51616] hover:bg-[#c84343] transition-all duration-100 text-white mt-4 mb-4"
              to="/iit-jee-neet"
              onClick={scrollToTop}
           >

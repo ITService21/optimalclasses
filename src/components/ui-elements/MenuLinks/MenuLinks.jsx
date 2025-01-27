@@ -30,7 +30,7 @@ export const MenuLinks = ({ menuLinks }) => {
             )}
         </div>
       ))}
-      <div>
+      {/* <div>
         {localStorage?.getItem("isAdmin") ? (
           <button
             className="md:text-[12px] lg:text-[16px] ml-2 bg-[#ff601c] hover:opacity-[0.8] text-white font- py-2 px-4 rounded focus:outline-none focus:shadow-outline"
@@ -52,7 +52,7 @@ export const MenuLinks = ({ menuLinks }) => {
               Admin Panel
           </button>
         )}
-      </div>
+      </div> */}
     </ul>
   );
 };

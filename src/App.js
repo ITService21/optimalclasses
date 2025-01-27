@@ -51,7 +51,7 @@ function App() {
 
   const { user } = useSelector((state) => state.profile);
   const state = useSelector((state) => state);
-  console.log("REDUX STATE", state);
+ 
 
   return (
     <div className="w-screen min-h-screen bg-richblack-900 flex flex-col font-inter">
@@ -63,7 +63,7 @@ function App() {
         <Route path="catalog/:catalogName" element={<Catalog />} />
         <Route path="courses/:courseId" element={<CourseDetails />} />
         <Route path="/why-oc" element={<Why />} />
-        <Route path="/director-message" element={<DirectorMessage />} />
+        <Route path="/our-director" element={<DirectorMessage />} />
         <Route path="/mission-vision" element={<MissionVision />} />
         <Route path="/student-journey" element={<FacilitiesWEProvide />} />
         <Route path="/album" element={<Album />} />
@@ -72,7 +72,7 @@ function App() {
         <Route path="/result" element={<Results />} />
         <Route path="/contact-us" element={<ContactUs />} />
         <Route path="/class-7t10" element={<Class7t10 />} />
-        <Route path="/class-10t12" element={<Class11t12 />} />
+        <Route path="/class-11t12" element={<Class11t12 />} />
         <Route path="/iit-jee-neet" element={<IITJEENEET />} />
         <Route path="admin-panel" element={<AdminLogin />} />
         <Route path="admin-logout" element={<AdminLogout />} />
