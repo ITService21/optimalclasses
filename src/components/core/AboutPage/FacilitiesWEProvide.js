@@ -135,9 +135,7 @@ const Facilities = () => {
                     Proven Track Record
                   </h3>
                   <p className="text-[#000000] text-[16px] text-justify">
-                    With over a decade of excellence, our students consistently
-                    achieve outstanding results, making us a trusted name in
-                    education.
+                  With a proven track record of excellence, our students consistently achieve outstanding results, solidifying our reputation as a trusted leader in education.
                   </p>
                 </div>
               </div>
