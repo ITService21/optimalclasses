@@ -40,9 +40,9 @@ function AcademicTeam() {
               <p className="font-mono font-medium text-[18px] md:text-[20px] text-gray-600 text-center mt-1">
                 {teacher?.education}
               </p>
-              <p className="font-mono text-[16px] md:text-[18px] text-gray-500 text-center mt-2">
+              {/* <p className="font-mono text-[16px] md:text-[18px] text-gray-500 text-center mt-2">
                 {teacher?.phone}
-              </p>
+              </p> */}
             </li>
           );
         })}
