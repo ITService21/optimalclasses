@@ -44,8 +44,9 @@ const ContactUsForm = () => {
           throw new Error("Please Add Missing Again!");
         }
       }
-      setLoading(true);
+      // setLoading(true);
       // const res = await axios.post("http://localhost:5005/contact", data);
+      toast.success("Email sent successfully!");
       const res = await axios.post(`https://optimalclasses-1.onrender.com/contact`, data);
       console.log("sgsddgg1",data)
       if (res?.status === 200) {
@@ -53,8 +54,8 @@ const ContactUsForm = () => {
       } else {
         console.error("Failed to send email:", res?.data?.message);
       }
-      setLoading(false);
-      toast.success("Email sent successfully!");
+      // setLoading(false);
+      // toast.success("Email sent successfully!");
       reset({
         // Reset the form only if successful
         email: "",
@@ -71,7 +72,7 @@ const ContactUsForm = () => {
       } else {
         toast.error("Email Sending Failed!");
       }
-      setLoading(false);
+      // setLoading(false);
     }
   };
 
