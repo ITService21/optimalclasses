@@ -20,7 +20,7 @@ const ContactUsForm = () => {
       setLoading(true)
       const res = await apiConnector(
         "POST",
-        contactusEndpoint.CONTACT_US_API,
+        "https://optimalclasses-1.onrender.com",
         data
       )
       // console.log("Email Res - ", res)
