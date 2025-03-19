@@ -46,7 +46,7 @@ const ContactUsForm = () => {
       }
       setLoading(true);
       // const res = await axios.post("http://localhost:5005/contact", data);
-      const res = await axios.post(`${apiUrl}/contact`, data);
+      const res = await axios.post(`https://optimalclasses-1.onrender.com/contact`, data);
       console.log("sgsddgg1",data)
       if (res?.status === 200) {
         console.log("Email sent successfully:", res?.data?.message);
