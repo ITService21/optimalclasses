@@ -17,7 +17,7 @@ const PerfectPlatform = () => {
   };
 
   return (
-    <section className="py-16">
+    <section className="py-6 md:py-16">
       <h2 className="text-[14px] md:text-xl lg:text-2xl font-bold py-3 md:py-2 text-center mb-4 text-white bg-[#ff0b0b]">
         <span className="bg-gradient-to-b py-4 from-[#fff5f3] to-[#ffffff] text-transparent bg-clip-text font-bold">
         TOP RATED COACHING CLASSES IN VARANASI
@@ -31,7 +31,7 @@ const PerfectPlatform = () => {
       </h2>
 
       {/* <div className="flex flex-col md:flex-row md:flex-flow justify-center items-center"> */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-1 justify-center items-center mt-20 md:px-8">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-1 justify-center items-center -mt-2 md:mt-20 md:px-8">
         {/* <ScrollAnimation animateIn="flipInX"> */}
         <div className="py-12 group relative bg-[#f4f4f4] m-3 p-6 rounded-lg shadow-lg shadow-[#8b8b8b] text-center    transition-all duration-200 overflow-hidden hover:scale-105">
           {/* Lottie Animation */}

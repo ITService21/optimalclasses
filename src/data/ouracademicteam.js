@@ -7,18 +7,18 @@ export const academicTeam = [
         photo:"/userimage/mahttutor.jpeg"
     },
     {
+        title:"Physics tutor",
+        name:"Saurabh Kumar Pandey",
+        education:"B. Tech. from IIT BHU ( +3 years experience)",
+        phone:"7380922230",
+        photo:"/images/skp.jpeg"
+    },
+    {
         title:"Chemistry tutor",
         name:"Vaibhav Singh",
         education:"M.Sc. Chemistry, B.ed. (+6 years experience)",
         phone:"9415228666",
         photo:"/userimage/chemistrytutor.jpeg"
-    },
-    {
-        title:"English tutor",
-        name:"Ms. Shalini",
-        education:"Masters in English from BHU (+2 years experience)",
-        phone:"9415228665",
-        photo:"/images/shaliniMam.jpeg"
     },
     {
         title:"Biology tutor",
@@ -28,10 +28,12 @@ export const academicTeam = [
         photo:"/userimage/biologytutor.jpeg"
     },
     {
-        title:"Physics tutor",
-        name:"Saurabh Kumar Pandey",
-        education:"B. Tech. from IIT BHU ( +3 years experience)",
-        phone:"7380922230",
-        photo:"/images/skp.jpeg"
-    }
+        title:"English tutor",
+        name:"Ms. Shalini",
+        education:"Masters in English from BHU (+2 years experience)",
+        phone:"9415228665",
+        photo:"/images/shaliniMam.jpeg"
+    },
+ 
+ 
 ]
