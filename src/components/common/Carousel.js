@@ -8,7 +8,7 @@ let imageArray = [
     alt: "landingPage1"
   },
   {
-    src: "/images/slide__5.jpg",
+    src: "/images/slide01.jpg",
     className: "block w-full object-cover",
     alt: "landingPage2"
   },
@@ -18,7 +18,7 @@ let imageArray = [
     alt: "landingPage3"
   },
   {
-    src: "/images/slide___4.jpg",
+    src: "/images/slide_04.jpg",
     className: "block w-full object-cover",
     alt: "landingPage4"
   },
@@ -39,10 +39,10 @@ export default function CarouselWithIndicators() {
             itemID={index + 1}
             className=" relative float-left hidden -mr-[100%] w-full transition-transform duration-[600ms] ease-in-out motion-reduce:transition-none"
           >
-            <div className="w-[90vw] mx-auto bg-gradient-to-b from-[#f1da28] to-[#f12861]">
+            <div  >
             <img
               src={record?.src}
-              className="block h-[40vw] object-cover mx-auto"
+              className="block w-full"
               alt={record?.alt}
             />
             </div>
