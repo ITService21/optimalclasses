@@ -11,7 +11,7 @@ export default function CarouselWithIndicators() {
             className="relative float-left hidden -mr-[100%] w-full transition-transform duration-[600ms] ease-in-out motion-reduce:transition-none"
           >
             <img
-           src="/images/journeyInside1.jpg"
+           src="/images/slid1.jpg"
               className="block w-full"
               alt="landingPage1"
             />
@@ -21,7 +21,7 @@ export default function CarouselWithIndicators() {
             className="relative float-left -mr-[100%] hidden w-full transition-transform duration-[600ms] ease-in-out motion-reduce:transition-none"
           >
             <img
-              src="/images/slide01.jpg"
+              src="/images/slid2.jpg"
               className="block w-full"
               alt="landingPage2"
             />
@@ -32,7 +32,7 @@ export default function CarouselWithIndicators() {
             className="relative float-left -mr-[100%] hidden w-full transition-transform duration-[600ms] ease-in-out motion-reduce:transition-none"
           >
             <img
-               src="/images/slide03.jpg"
+               src="/images/Landing Page 3.jpg"
               className="block w-full"
               alt="landingPage3"
             />
@@ -52,7 +52,7 @@ export default function CarouselWithIndicators() {
             className="relative float-left -mr-[100%] hidden w-full transition-transform duration-[600ms] ease-in-out motion-reduce:transition-none"
           >
             <img
-              src="/images/slide005.jpg"
+              src="/images/Landing Page 5.jpg"
               className="block w-full"
               alt="landingPage5"
             />

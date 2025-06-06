@@ -98,7 +98,7 @@ function ContactUs() {
                 Location
               </div>
               <p className="font-cinzel text-[18px] mb-[1px] text-center px-4 md:px-6">
-              Optimal Classes, Near Bengal sweet house, BLW-BHU road Varanasi, Uttar Pradesh.
+              Optimal Classes, New Colony Kakarmatta Varanasi, Uttar Pradesh.
               </p>
             </div>
           </div>

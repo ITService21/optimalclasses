@@ -270,7 +270,7 @@ const Footer = () => {
           </div>
 
           <div className="text-center order-first md:order-last px-[20px] p-[4px] leading-6 text-[15px]">
-            Optimal Classes, Near Bengal sweet house, BLW-BHU road Varanasi,
+            Optimal Classes, New Colony Kakarmatta Varanasi,
             Uttar Pradesh. <br /> +91 9415228666, +91 7380922230
           </div>
         </div>

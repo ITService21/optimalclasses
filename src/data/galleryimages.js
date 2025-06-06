@@ -1,5 +1,65 @@
 export const gallery = [
     {
+        title: "Mentor's Pic",
+        src: "/images/Gallery 1.jpg"
+    },
+    {
+        title: "Digital Screen",
+        src: "/images/Gallery 3.jpg"
+    },
+    {
+        title: "Mentor's Pic",
+        src: "/images/IMG_1327.jpg"
+    },
+    {
+        title: "Director's Pic",
+        src: "/images/IMG_1332.jpg"
+    },
+    {
+        title: "Director's Pic",
+        src: "/images/IMG_1296.jpg"
+    },
+    {
+        title: "Kakarmatta Office Opening",
+        src: "/images/WhatsApp Image 2025-06-06 at 11.55.32 PM.jpeg"
+    },
+    {
+        title: "Kakarmatta Office Pic",
+        src: "/images/WhatsApp Image 2025-06-06 at 11.55.33 PM (1).jpeg"
+    },
+    {
+        title: "Kakarmatta Office Opening",
+        src: "/images/WhatsApp Image 2025-06-06 at 11.55.33 PM.jpeg"
+    },
+    {
+        title: "Office Pic",
+        src: "/images/IMG_1337.jpg"
+    },
+    {
+        title: "Mentor's Pic",
+        src: "/images/IMG_20250606_202604.jpg"
+    },
+    {
+        title: "Get Together",
+        src: "/images/IMG-20250601-WA0005.jpg"
+    },
+    {
+        title: "Mentor's Pic",
+        src: "/images/IMG-20250601-WA0004.jpg"
+    },
+    {
+        title: "Our Team",
+        src: "/images/IMG_1327.jpg"
+    },
+    {
+        title: "Our Team",
+        src: "/images/IMG_1321.jpg"
+    },
+    {
+        title: "Our Team",
+        src: "/images/IMG-20250601-WA0001.jpg"
+    },
+    {
         title: "Classroom",
         src: "/userimage/classroom.jpeg"
     },
@@ -14,6 +74,14 @@ export const gallery = [
     {
         title: "Our director",
         src: "/userimage/ourdirector.jpeg"
+    },
+    {
+        title: "Our Team",
+        src: "/images/IMG-20250601-WA0003.jpg"
+    },
+    {
+        title: "Our Team",
+        src: "/images/IMG-20250601-WA0006.jpg"
     },
     {
         title: "Maths class",
