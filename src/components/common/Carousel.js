@@ -1,62 +1,54 @@
 import React from "react";
 import { TECarousel, TECarouselItem } from "tw-elements-react";
 
+let imageArray = [
+  {
+    src: "/images/slid1.jpg",
+    className: "block w-full  object-cover",
+    alt: "landingPage1"
+  },
+  {
+    src: "/images/slid2.jpg",
+    className: "block w-full object-cover",
+    alt: "landingPage2"
+  },
+  {
+    src: "/images/Landing Page 3.jpg",
+    className: "block w-full object-cover",
+    alt: "landingPage3"
+  },
+  {
+    src: "/images/slide04.jpg",
+    className: "block w-full object-cover",
+    alt: "landingPage4"
+  },
+  {
+    src: "/images/Landing Page 5.jpg",
+    className: "block w-full object-cover",
+    alt: "landingPage5"
+  }
+]
+
 export default function CarouselWithIndicators() {
   return (
     <>
       <TECarousel showControls showIndicators ride="carousel" interval={3000}>
         <div className="relative w-full overflow-hidden after:clear-both after:block after:content-['']">
-        <TECarouselItem
-            itemID={1}
-            className="relative float-left hidden -mr-[100%] w-full transition-transform duration-[600ms] ease-in-out motion-reduce:transition-none"
+          {imageArray?.map((record, index) => {
+            return  <div className=""><TECarouselItem
+            itemID={index + 1}
+            className=" relative float-left hidden -mr-[100%] w-full transition-transform duration-[600ms] ease-in-out motion-reduce:transition-none"
           >
+            <div  >
             <img
-           src="/images/slid1.jpg"
+              src={record?.src}
               className="block w-full"
-              alt="landingPage1"
+              alt={record?.alt}
             />
-          </TECarouselItem>
-          <TECarouselItem
-            itemID={2}
-            className="relative float-left -mr-[100%] hidden w-full transition-transform duration-[600ms] ease-in-out motion-reduce:transition-none"
-          >
-            <img
-              src="/images/slid2.jpg"
-              className="block w-full"
-              alt="landingPage2"
-            />
-          </TECarouselItem>
+            </div>
+          </TECarouselItem></div>
 
-          <TECarouselItem
-            itemID={3}
-            className="relative float-left -mr-[100%] hidden w-full transition-transform duration-[600ms] ease-in-out motion-reduce:transition-none"
-          >
-            <img
-               src="/images/Landing Page 3.jpg"
-              className="block w-full"
-              alt="landingPage3"
-            />
-          </TECarouselItem>
-          <TECarouselItem
-            itemID={4}
-            className="relative float-left -mr-[100%] hidden w-full transition-transform duration-[600ms] ease-in-out motion-reduce:transition-none"
-          >
-            <img
-              src="/images/slide04.jpg"
-              className="block w-full"
-              alt="landingPage4"
-            />
-          </TECarouselItem>
-          <TECarouselItem
-            itemID={5}
-            className="relative float-left -mr-[100%] hidden w-full transition-transform duration-[600ms] ease-in-out motion-reduce:transition-none"
-          >
-            <img
-              src="/images/Landing Page 5.jpg"
-              className="block w-full"
-              alt="landingPage5"
-            />
-          </TECarouselItem>
+          })}
         </div>
       </TECarousel>
     </>
