@@ -52,11 +52,11 @@ export const gallery = [
         src: "/images/IMG_1327.jpg"
     },
     {
-        title: "Our Team",
+        title: "Chemistry Tutor(Vaibhav Sir)",
         src: "/images/IMG_1321.jpg"
     },
     {
-        title: "Our Team",
+        title: "Biology Tutor(Dr. Rishita Mam)",
         src: "/images/IMG-20250601-WA0001.jpg"
     },
     {
@@ -80,7 +80,7 @@ export const gallery = [
         src: "/images/IMG-20250601-WA0003.jpg"
     },
     {
-        title: "Our Team",
+        title: "Physics Tutor(Saurabh Sir)",
         src: "/images/IMG-20250601-WA0006.jpg"
     },
     {
