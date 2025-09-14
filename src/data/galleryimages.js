@@ -1,4 +1,12 @@
-export const gallery = [
+export const gallery = [   
+    {
+        title: "Teacher's Day Celebration",
+        src: "/images/g13.JPG"
+    },
+    {
+        title: "Students Pic",
+        src: "/images/g14.JPG"
+    },
     {
         title: "Mentor's Pic",
         src: "/images/Gallery 1.jpg"
@@ -8,12 +16,24 @@ export const gallery = [
         src: "/images/Gallery 3.jpg"
     },
     {
+        title: "Students Pic",
+        src: "/images/g3.JPG"
+    },
+    {
+        title: "Celebration",
+        src: "/images/g2.JPG"
+    },
+    {
         title: "Mentor's Pic",
         src: "/images/IMG_1327.jpg"
     },
     {
         title: "Director's Pic",
         src: "/images/IMG_1332.jpg"
+    },
+    {
+        title: "Get Together",
+        src: "/images/g10.JPG"
     },
     {
         title: "Director's Pic",
@@ -36,6 +56,18 @@ export const gallery = [
         src: "/images/IMG_1337.jpg"
     },
     {
+        title: "Celebration",
+        src: "/images/g8.JPG"
+    },
+    {
+        title: "Celebration",
+        src: "/images/g6.JPG"
+    },
+    {
+        title: "Studnets Pic",
+        src: "/images/g12.JPG"
+    },
+    {
         title: "Mentor's Pic",
         src: "/images/IMG_20250606_202604.jpg"
     },
@@ -46,6 +78,14 @@ export const gallery = [
     {
         title: "Mentor's Pic",
         src: "/images/IMG-20250601-WA0004.jpg"
+    },
+    {
+        title: "Celebration",
+        src: "/images/g5.JPG"
+    },
+    {
+        title: "Get Together",
+        src: "/images/g4.JPG"
     },
     {
         title: "Our Team",

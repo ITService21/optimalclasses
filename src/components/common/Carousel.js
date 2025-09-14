@@ -3,17 +3,17 @@ import { TECarousel, TECarouselItem } from "tw-elements-react";
 
 let imageArray = [
   {
-    src: "/images/slid1.jpg",
+    src: "/images/s1.jpeg",
     className: "block w-full  object-cover",
     alt: "landingPage1"
   },
   {
-    src: "/images/slid2.jpg",
+    src: "/images/g15.jpeg",
     className: "block w-full object-cover",
     alt: "landingPage2"
   },
   {
-    src: "/images/Landing Page 3.jpg",
+    src: "/images/slid1.jpg",
     className: "block w-full object-cover",
     alt: "landingPage3"
   },
@@ -23,7 +23,7 @@ let imageArray = [
     alt: "landingPage4"
   },
   {
-    src: "/images/Landing Page 5.jpg",
+    src: "/images/slid2.jpg",
     className: "block w-full object-cover",
     alt: "landingPage5"
   }
