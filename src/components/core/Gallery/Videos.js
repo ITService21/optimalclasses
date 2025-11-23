@@ -3,7 +3,7 @@ import axios from "axios";
 import { toast } from "react-hot-toast";
 import Button from "../../common/Button";
 import { videoLink } from "../../../data/video-links";
-import {gallery} from "../../../data/galleryimages"
+import { gallery } from "../../../data/galleryimages";
 function VideoManager() {
   const apiUrl =
     process.env.NODE_ENV === "production"
@@ -58,7 +58,6 @@ function VideoManager() {
           Our Videos
         </div>
 
-
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-4 md:gap-10 lg:gap-14 lg:mx-10">
           {videoLink?.map((video, index) => {
             return (
@@ -93,8 +92,21 @@ function VideoManager() {
               </div>
             );
           })}
-        </div>
+          <div key={5} className="mb-4 border p-2 rounded">
+            <video width="100%" height="315" controls className="rounded">
+              <source src="/images/optimal_v1.mp4" type="video/mp4" />
+              Your browser does not support the video tag.
+            </video>
 
+            <h3 className="text-lg font-rubik-vinyl font-bold my-1 max-h-[60px] overflow-hidden">
+              Childeren's Day Special - Optimal Classes
+            </h3>
+            <p className="font-rubik-vinyl overflow-y-auto max-h-[120px]">
+              A special video dedicated to Children's Day, celebrating the joy
+              and potential of every child with Optimal Classes.
+            </p>
+          </div>
+        </div>
 
         {/* Pagination Controls */}
         <div className="flex justify-center mt-6 space-x-4 mb-16">
@@ -127,6 +139,5 @@ function VideoManager() {
     </div>
   );
 }
-
 
 export default VideoManager;
