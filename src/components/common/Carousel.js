@@ -13,7 +13,7 @@ let imageArray = [
     alt: "landingPage2"
   },
   {
-    src: "/images/slide_003.jpg",
+    src: "/images/slide_003.JPG",
     className: "block w-full object-cover",
     alt: "landingPage3"
   },
