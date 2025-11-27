@@ -32,6 +32,14 @@ export const gallery = [
         src: "/images/IMG_1332.jpg"
     },
     {
+        title: "Tour Pic",
+        src: "/images/gallery1.jpg"
+    },
+    {
+        title: "Tour Pic",
+        src: "/images/gallery2.jpg"
+    },
+    {
         title: "Get Together",
         src: "/images/g10.JPG"
     },
