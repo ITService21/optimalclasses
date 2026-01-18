@@ -9,10 +9,18 @@ import {
   FaFileAlt,
   FaQuestionCircle,
 } from "react-icons/fa";
+import SEO from "../../common/SEO";
+import { SEO_DATA } from "../../../data/seoData";
 
 const Facilities = () => {
   return (
     <div>
+      <SEO 
+        title={SEO_DATA.studentJourney.title}
+        description={SEO_DATA.studentJourney.description}
+        keywords={SEO_DATA.studentJourney.keywords}
+        url={SEO_DATA.studentJourney.url}
+      />
       <div
         className="relative bg-cover bg-fixed flex justify-center items-center h-[130px] md:h-[220px] lg:h-[300px] custom-bg-position bg-gradient-to-b from-[#FF512F] to-[#DD2476]"
         style={{
@@ -52,17 +60,17 @@ const Facilities = () => {
           <img
             src="/images/journeyInside1.jpg"
             className="rounded-[10px] object-cover h-[300px] w-full"
-            alt="img not load"
+            alt="Student Journey at Optimal Classes Varanasi - Digital Classroom Experience"
           />
           <img
             src="/images/journeyInside2.jpg"
             className="rounded-[10px] object-cover h-[300px] w-full hidden md:block"
-            alt="img not load"
+            alt="Student Journey at Optimal Classes Varanasi - Digital Classroom Experience"
           />
           <img
             src="/images/facilities3.webp"
             className="rounded-[10px] object-cover h-[300px] w-full hidden md:block"
-            alt="img not load"
+            alt="Student Journey at Optimal Classes Varanasi - Digital Classroom Experience"
           />
         </div>
 

@@ -1,4 +1,6 @@
 import React from "react";
+import SEO from "../../common/SEO";
+import { SEO_DATA } from "../../../data/seoData";
 
 const courses = [
   {
@@ -35,6 +37,12 @@ const courses = [
 const FeeStructure = () => {
   return (
     <div className=" bg-gradient-to-b from-[#fff97e] to-[#cbfe90] py-10 px-2 md:px-8 lg:px-12">
+      <SEO 
+        title={SEO_DATA.class7t10.title}
+        description={SEO_DATA.class7t10.description}
+        keywords={SEO_DATA.class7t10.keywords}
+        url={SEO_DATA.class7t10.url}
+      />
       <h1 className="text-[#ff3434] text-[36px] md:text-[42px] lg:text-[50px] font-rubik-vinyl font-bold text-center pb-10">Courses & Fee Structure (Session 2025-26)</h1>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6 px-5">
         {courses.map((course, index) => (
@@ -44,7 +52,7 @@ const FeeStructure = () => {
           >
             <img
               src={course.image}
-              alt={course.name}
+              alt={`${course.name} - Coaching in Varanasi at Optimal Classes`}
               className="w-full p-4 rounded-md"
             />
             <div className="p-5 pt-3 text-center">

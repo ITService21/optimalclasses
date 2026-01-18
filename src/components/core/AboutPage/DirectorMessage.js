@@ -1,8 +1,16 @@
 import React from "react";
+import SEO from "../../common/SEO";
+import { SEO_DATA } from "../../../data/seoData";
 
 function DirectorMessage() {
   return (
     <div>
+      <SEO 
+        title={SEO_DATA.ourDirector.title}
+        description={SEO_DATA.ourDirector.description}
+        keywords={SEO_DATA.ourDirector.keywords}
+        url={SEO_DATA.ourDirector.url}
+      />
       <div
         className="relative bg-cover bg-fixed flex justify-center items-center h-[130px] md:h-[220px] lg:h-[300px] custom-bg-position bg-gradient-to-b from-[#FF512F] to-[#DD2476]"
         style={{
@@ -95,7 +103,7 @@ function DirectorMessage() {
               <img
                 src="/images/directorImage.jpeg"
                 className="w-[93%] h-[93%] rounded-[10px] my-auto shadow-md shadow-gray-300 mt-[1.5vw] mx-auto"
-                alt="pic not load"
+                alt="Director of Optimal Classes Varanasi - Shobhit Kumar Srivastava"
               />
             </div>
             {/* <div className="md:w-[600px] text-[#ffffff] h-[100px] bg-[#850e0e] m-8 rounded-md">

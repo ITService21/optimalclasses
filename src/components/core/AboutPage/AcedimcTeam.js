@@ -6,6 +6,8 @@ import Button from "../../common/Button";
 import Input from "../../common/Input";
 import Loader from "../../common/Loader"
 import { academicTeam } from "../../../data/ouracademicteam"
+import SEO from "../../common/SEO";
+import { SEO_DATA } from "../../../data/seoData";
 
 function AcademicTeam() {
   const apiUrl = process.env.NODE_ENV === 'production'
@@ -15,6 +17,12 @@ function AcademicTeam() {
   return (
     // <div className="w-[100vw] bg-[#ffffff] bg-gradient-to-b from-[#ffe6e9] to-[#cbfe90]">
     <div className="w-[100vw] bg-[#f3ffff] bg-gradient-to-b ">
+      <SEO 
+        title={SEO_DATA.acedemicTeam.title}
+        description={SEO_DATA.acedemicTeam.description}
+        keywords={SEO_DATA.acedemicTeam.keywords}
+        url={SEO_DATA.acedemicTeam.url}
+      />
       {/* <Loader loading={loader}/> */}
       <div className="text-[#db2929] text-[36px] md:text-[42px] lg:text-[50px] font-rubik-vinyl font-bold text-center pt-6 md:pt-10 pb-6">
         Our Academic Team

@@ -1,8 +1,17 @@
 import React from "react";
+import SEO from "../../common/SEO";
+import { SEO_DATA } from "../../../data/seoData";
+
 function Why() {
   return (
     // bg-gradient-to-b from-[#C6EA8D] to-[#FE90AF]
     <div>
+      <SEO 
+        title={SEO_DATA.whyOc.title}
+        description={SEO_DATA.whyOc.description}
+        keywords={SEO_DATA.whyOc.keywords}
+        url={SEO_DATA.whyOc.url}
+      />
       <div
         className="relative bg-cover bg-fixed flex justify-center items-center h-[130px] md:h-[220px] lg:h-[300px] custom-bg-position bg-gradient-to-b from-[#FF512F] to-[#DD2476]"
         style={{
@@ -87,7 +96,7 @@ function Why() {
             <img
               src="/images/whyChooseUs _.jpeg"
               className="w-[93%] h-[93%] rounded-[10px] my-auto shadow-md shadow-gray-300 mt-[1.5vw] mx-auto"
-              alt="pic not load"
+              alt="Why Choose Optimal Classes Varanasi - Best Coaching Institute"
             />
           </div>
         </div>
