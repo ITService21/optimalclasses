@@ -1,0 +1,9 @@
+.service-swipe {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	align-items: center;
+	/* background-image: linear-gradient(rgba(0,0,0,0),rgba(0,0,0,0.7)),url("../../../public/images/why.webp"); */
+	background-size: cover;
+	background-attachment: fixed;
+}
