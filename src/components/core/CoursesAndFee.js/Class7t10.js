@@ -6,7 +6,7 @@ const courses = [
   {
     name: "Pre-Foundation (for class VI)",
     description: "Build a strong Pre-foundation with our tailored program for Class VII students.",
-    image: "/images/Class_6.PNG", // Replace with the actual image URL
+    image: "/images/Class_6.png", // Replace with the actual image URL
     totalFee: "₹ 22,200",
     installments: ["₹ 8,880", "₹ 8,880", "₹ 4,440"],
   },

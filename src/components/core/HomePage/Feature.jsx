@@ -56,7 +56,7 @@ const Features = () => {
           </div>
           <div className=" my-[20px] md:-mr-[14px]">
             <img
-              src="/images/slide005.JPEG"
+              src="/images/slide005.jpeg"
               className="w-full h-full float-right rounded-[10px] shadow-md shadow-gray-300"
               alt="pic not load"
             />

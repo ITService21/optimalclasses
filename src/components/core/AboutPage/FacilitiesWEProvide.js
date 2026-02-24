@@ -68,7 +68,7 @@ const Facilities = () => {
             alt="Student Journey at Optimal Classes Varanasi - Digital Classroom Experience"
           />
           <img
-            src="/images/journeyInside2.JPEG"
+            src="/images/journeyInside2.jpeg"
             className="rounded-[10px] object-cover h-[300px] w-full hidden md:block"
             alt="Student Journey at Optimal Classes Varanasi - Digital Classroom Experience"
           />

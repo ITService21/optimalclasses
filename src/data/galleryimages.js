@@ -9,7 +9,7 @@ export const gallery = [
     },
     {
         title: "Teacher's Day Celebration",
-        src: "/images/g13.JPEG"
+        src: "/images/g13.jpeg"
     },
     {
         title: "Digital Screen",
