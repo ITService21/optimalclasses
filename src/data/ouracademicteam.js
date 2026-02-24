@@ -44,6 +44,6 @@ export const academicTeam = [
         name:"Anuj Yadav",
         education:"M.SC Botany (5+ years experience)",
         phone:"7380922230",
-        photo:"/images/Anuj Yadav.JPEG"
+        photo:"/images/Anuj Yadav.jpeg"
     } 
 ]

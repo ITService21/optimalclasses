@@ -23,10 +23,10 @@ export const gallery = [
         title: "Children's Day Celebration",
         src: "/images/ga2.jpeg"
     },
-    {
-        title: "Children's Day Celebration",
-        src: "/images/ga3.jpeg"
-    },
+    // {7
+    //     title: "Children's Day Celebration",
+    //     src: "/images/ga3.jpeg"
+    // },
     {
         title: "Children's Day Celebration",
         src: "/images/ga4.jpeg"
@@ -63,10 +63,10 @@ export const gallery = [
         title: "Students Pic",
         src: "/images/g3.JPG"
     },
-    {
-        title: "Mentor's Pic",
-        src: "/images/IMG_1327.jpg"
-    },
+    // {17
+    //     title: "Mentor's Pic", 
+    //     src: "/images/IMG_1327.jpg"
+    // },
     {
         title: "Director's Pic",
         src: "/images/IMG_1332.jpg"
@@ -119,14 +119,14 @@ export const gallery = [
         title: "Mentor's Pic",
         src: "/images/IMG_20250606_202604.jpg"
     },
-    {
-        title: "Get Together",
-        src: "/images/IMG-20250601-WA0005.jpg"
-    },
-    {
-        title: "Mentor's Pic",
-        src: "/images/IMG-20250601-WA0004.jpg"
-    },
+    // { 31 3
+    //     title: "Get Together",
+    //     src: "/images/IMG-20250601-WA0005.jpg"
+    // },
+    // {32 4
+    //     title: "Mentor's Pic",
+    //     src: "/images/IMG-20250601-WA0004.jpg"
+    // },
     {
         title: "Celebration",
         src: "/images/g5.JPG"
@@ -135,26 +135,26 @@ export const gallery = [
         title: "Get Together",
         src: "/images/g4.JPG"
     },
-    {
-        title: "Our Team",
-        src: "/images/IMG_1327.jpg"
-    },
+    // {33 5
+    //     title: "Our Team",
+    //     src: "/images/IMG_1327.jpg"
+    // },
     {
         title: "Chemistry Tutor(Vaibhav Sir)",
         src: "/images/IMG_1321.jpg"
     },
-    {
-        title: "Biology Tutor(Dr. Rishita Mam)",
-        src: "/images/IMG-20250601-WA0001.jpg"
-    },
+    // { 34 6
+    //     title: "Biology Tutor(Dr. Rishita Mam)",
+    //     src: "/images/IMG-20250601-WA0001.jpg"
+    // },
     {
         title: "Classroom",
         src: "/userimage/classroom.jpeg"
     },
-    {
-        title: "Conducting classes",
-        src: "/userimage/conductingclasses.jpeg"
-    },
+    // { 35 7
+    //     title: "Conducting classes",
+    //     src: "/userimage/conductingclasses.jpeg"
+    // },
     {
         title: "Weekly assessment",
         src: "/userimage/weeklyassessment.jpeg"
@@ -199,10 +199,10 @@ export const gallery = [
         title: "Prize distribution",
         src: "/userimage/prizedistribution.jpeg"
     },
-    {
-        title: "Office",
-        src: "/userimage/office.jpeg"
-    },
+    // { 8
+    //     title: "Office",
+    //     src: "/userimage/office.jpeg"
+    // },
     {
         title: "Seminar",
         src: "/userimage/seminar.jpeg"

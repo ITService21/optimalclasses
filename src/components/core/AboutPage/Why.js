@@ -146,7 +146,7 @@ function Why() {
           <div className=" my-[20px] md:-mr-[14px] order-first">
             <img
               src="/images/whyChooseUs _.jpeg"
-              className="w-[93%] h-[53%] rounded-[10px] my-auto shadow-md shadow-gray-300 mt-[1.5vw] mx-auto"
+              className="w-[93%] h-[95%] md:h-[53%] rounded-[10px] my-auto shadow-md shadow-gray-300 mt-[1.5vw] mx-auto"
               alt="Why Choose Optimal Classes Varanasi - Best Coaching Institute"
             />
           </div>
