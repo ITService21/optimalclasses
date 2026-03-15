@@ -6,10 +6,17 @@ export const academicTeam = [
         phone:"9415238666",
         photo:"/images/director_new.png"
     },
+    // {
+    //     title:"Physics tutor",
+    //     name:"Saurabh Kumar Pandey",
+    //     education:"B. Tech. from IIT BHU (3+ years experience)",
+    //     phone:"7380922230",
+    //     photo:"/images/skp.jpeg"
+    // },
     {
         title:"Physics tutor",
-        name:"Saurabh Kumar Pandey",
-        education:"B. Tech. from IIT BHU (3+ years experience)",
+        name:"Rahul Pandey",
+        education:"M. Sc. - Physics (10+ Years)",
         phone:"7380922230",
         photo:"/images/skp.jpeg"
     },
